@@ -12,10 +12,10 @@ def read_data_file_into_dataframe(file_path):
 
         return dataframe
 
-def insert_data_into_database(dataframe, engine):
+def insert_data_into_database(dataframe, engine, table_name):
 
-    table_name = 'fast_food'
-    response = dataframe.to_sql(table_name, engine, if_exists='replace', index=False)
+    create_table_name = table_name
+    response = dataframe.to_sql(create_table_name, engine, if_exists='replace', index=False)
     
     return response
 
