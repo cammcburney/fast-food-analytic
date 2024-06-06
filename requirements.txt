@@ -21,7 +21,9 @@ MarkupSafe==2.1.5
 marshmallow==3.21.3
 mdurl==0.1.2
 mypy-extensions==1.0.0
+numpy==1.26.4
 packaging==24.0
+pandas==2.2.2
 pathspec==0.12.1
 pbr==6.0.0
 pg8000==1.31.2
@@ -34,6 +36,7 @@ Pygments==2.18.0
 pytest==8.2.2
 pytest-testdox==3.1.0
 python-dateutil==2.9.0.post0
+pytz==2024.1
 PyYAML==6.0.1
 requests==2.32.3
 rich==13.7.1
@@ -48,6 +51,7 @@ SQLAlchemy==2.0.30
 stevedore==5.2.0
 typer==0.12.3
 typing_extensions==4.12.1
+tzdata==2024.1
 urllib3==2.2.1
 virtualenv==20.26.2
 virtualenv-clone==0.5.7
