@@ -69,8 +69,8 @@ security-test:
 
 ## Run the black code check
 run-black:
-	$(call execute_in_env, find ./testing/ingestion ./testing/processing ./testing/warehouse -name '*.py' -exec black {} +)
-	$(call execute_in_env, find ./src/ingestion -name '*.py' -exec black {} +)
+	$(call execute_in_env, find ./testing/ -name '*.py' -exec black {} +)
+	$(call execute_in_env, find ./src/ -name '*.py' -exec black {} +)
 
 ## Run the unit tests
 unit-test:
@@ -78,9 +78,7 @@ unit-test:
 
 ## Run the coverage check
 check-coverage:
-	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=src/ingestion/ testing/)
-	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=src/processing/ testing/)
-	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=src/warehouse/ testing/)			
+	$(call execute_in_env, PYTHONPATH=${PYTHONPATH} pytest --cov=src/ ./testing/)
 
 ## Run all checks
 run-checks: security-test run-black unit-test check-coverage
