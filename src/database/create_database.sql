@@ -1,4 +1,5 @@
-DROP DATABASE IF EXISTS fastfooddata;
-CREATE DATABASE fastfooddata;
+SELECT 'CREATE DATABASE oltpdatabase'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'oltpdatabase')\gexec
 
-\c fastfooddata;
+SELECT 'CREATE DATABASE olapwarehouse'
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'olapwarehouse')\gexec
