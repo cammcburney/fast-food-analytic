@@ -3,8 +3,6 @@ import os
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 
-csv_file_path = 'data/processed/fast-food-data-sample.csv'
-
 def read_data_file_into_dataframe(file_path):
 
     if file_path.endswith(".csv"):
@@ -14,8 +12,7 @@ def read_data_file_into_dataframe(file_path):
 
 def insert_data_into_database(dataframe, engine, table_name):
 
-    create_table_name = table_name
-    response = dataframe.to_sql(create_table_name, engine, if_exists='replace', index=False)
+    response = dataframe.to_sql(table_name, engine, if_exists='replace', index=False)
     
     return response
 
