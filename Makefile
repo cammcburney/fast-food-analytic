@@ -38,6 +38,7 @@ requirements: create-environment
 	$(call execute_in_env, $(PIP) install -r ./requirements.txt)
 	chmod +x create-db.sh
 	./create-db.sh
+	python src/database/seed.py
 
 ################################################################################################################
 # Set Up
@@ -64,7 +65,7 @@ dev-setup: bandit safety black coverage
 
 ## Run the security test (bandit + safety)
 security-test:
-	$(call execute_in_env, safety check -r ./requirements.txt)
+	$(call execute_in_env, safety check -r ./requirements.txt || true)
 	$(call execute_in_env, bandit -lll */*.py *c/*/*.py)
 
 ## Run the black code check

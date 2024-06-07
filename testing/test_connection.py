@@ -2,8 +2,7 @@ import pytest
 import os
 from unittest.mock import patch, Mock
 from sqlalchemy import Engine
-from src.utils.connection_utils import (get_db_credentials,
-                                        create_engine_connection)
+from src.utils.connection_utils import get_db_credentials, create_engine_connection
 
 mock_credentials = {
     "user": "test",
@@ -22,12 +21,15 @@ mock_test_credentials = {
     "port": "5432",
 }
 
+
 class TestGetDBConnection:
 
     def test_returns_dictionary(self):
         assert type(get_db_credentials("user")) == dict
 
-    @patch("src.utils.connection_utils.get_db_credentials", return_value=mock_credentials)
+    @patch(
+        "src.utils.connection_utils.get_db_credentials", return_value=mock_credentials
+    )
     def test_returns_user_credentials(self, mock_get_db_credentials):
 
         dummy_creds = mock_get_db_credentials("user")
@@ -40,39 +42,50 @@ class TestGetDBConnection:
         assert dummy_creds["warehouse"] == "olapdatabase"
         assert len(dummy_creds) == 6
 
-    @patch("src.utils.connection_utils.get_db_credentials", side_effect=Exception("Unable to reach requested environment variables."))
+    @patch(
+        "src.utils.connection_utils.get_db_credentials",
+        side_effect=Exception("Unable to reach requested environment variables."),
+    )
     def test_exception_raised(self, mock_get_db_credentials):
-            with pytest.raises(Exception, match="Unable to reach requested environment variables."):
-                mock_get_db_credentials("user")
-    
+        with pytest.raises(
+            Exception, match="Unable to reach requested environment variables."
+        ):
+            mock_get_db_credentials("user")
+
     def test_invalid_credentials_type(self):
-        with pytest.raises(ValueError, match="Invalid value for which_credentials. Expected 'user' or 'test'."):
+        with pytest.raises(
+            ValueError,
+            match="Invalid value for which_credentials. Expected 'user' or 'test'.",
+        ):
             get_db_credentials("invalid")
 
-    @patch("src.utils.connection_utils.os.getenv", side_effect=lambda x: {
-    'db_user': 'test_user',
-    'db_password': 'test_password',
-    'db_host': 'test_host',
-    'db_port': 'test_port',
-    'test_db_name': 'test_database'
-    }[x])
-
+    @patch(
+        "src.utils.connection_utils.os.getenv",
+        side_effect=lambda x: {
+            "db_user": "test_user",
+            "db_password": "test_password",
+            "db_host": "test_host",
+            "db_port": "test_port",
+            "test_db_name": "test_database",
+        }[x],
+    )
     def test_get_user_credentials_test_path(self, mock_getenv):
         expected_credentials = {
             "user": "test_user",
             "password": "test_password",
             "host": "test_host",
             "port": "test_port",
-            "database": "test_database"
+            "database": "test_database",
         }
 
         actual_credentials = get_db_credentials("test")
         assert actual_credentials == expected_credentials
-    
-    @patch('src.utils.connection_utils.os.getenv', side_effect={})
+
+    @patch("src.utils.connection_utils.os.getenv", side_effect={})
     def test_raise_exception_no_variables(self, mock_getenv):
         with pytest.raises(Exception):
-             get_db_credentials("user")
+            get_db_credentials("user")
+
 
 class Test_Create_Engine_Connection:
 
@@ -91,13 +104,21 @@ class Test_Create_Engine_Connection:
 
         engine = create_engine_connection(mock_credentials, switch=True)
         assert isinstance(engine, Engine)
-         
-    @patch("src.utils.connection_utils.create_engine_connection", side_effect=ConnectionError("Error occured when connecting to the database, please check credentials."))
+
+    @patch(
+        "src.utils.connection_utils.create_engine_connection",
+        side_effect=ConnectionError(
+            "Error occured when connecting to the database, please check credentials."
+        ),
+    )
     def test_exception_raised(self, mock_create_engine_connection):
-            with pytest.raises(ConnectionError, match="Error occured when connecting to the database, please check credentials."):
-                mock_create_engine_connection(mock_credentials)
+        with pytest.raises(
+            ConnectionError,
+            match="Error occured when connecting to the database, please check credentials.",
+        ):
+            mock_create_engine_connection(mock_credentials)
 
     def test_raise_exception_bad_credentials(self):
         bad_input = {}
         with pytest.raises(Exception):
-             create_engine_connection(bad_input)
+            create_engine_connection(bad_input)
