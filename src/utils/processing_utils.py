@@ -1,4 +1,4 @@
-from connection_utils import get_db_credentials, create_engine_connection
+from src.utils.connection_utils import get_db_credentials, create_engine_connection
 import pandas as pd
 from sqlalchemy import text
 def manager_query():
@@ -16,7 +16,7 @@ def manager_query():
     
     df.insert(0, 'Manager_id', range(1, 1 + len(df)))
     
-    print(df)
+    #print(df)
     return df
 
 def product_query():
@@ -34,7 +34,7 @@ def product_query():
     
     df.insert(0, 'Product_id', range(1, 1 + len(df)))
     
-    print(df)
+    #print(df)
     return df
 
 def purchase_query():
@@ -52,7 +52,7 @@ def purchase_query():
     
     df.insert(0, 'Purchase_Type_id', range(1, 1 + len(df)))
     
-    print(df)
+    #print(df)
     return df
 
 def payment_method_query():
@@ -70,7 +70,7 @@ def payment_method_query():
     
     df.insert(0, 'Payment_id', range(1, 1 + len(df)))
     
-    print(df)
+    #print(df)
     return df
 
 managers_df = manager_query()
@@ -95,7 +95,7 @@ def combined_data_query():
     df = pd.DataFrame(rows, columns=result.keys())
     
     
-    df = df.merge(managers_df, on=["City", "Country", "Manager"], how='left', suffixes=('', '_manager'))
+    df = df.merge(managers_df, on=["Manager","City", "Country"], how='left', suffixes=('', '_manager'))
     
     
     df = df.merge(products_df, on=["Product", "Price", "Cost", "Profit/Unit"], how='left', suffixes=('', '_product'))
@@ -116,9 +116,9 @@ def combined_data_query():
 
   
     final_df = df[['Order ID', 'Date', 'Product_ID', 'Price','Quantity', 'Cost', 'Profit/Unit', 'Manager_ID',
-                   'Country', 'Manager', 'Purchase_Type_ID', 'Payment_Method_ID', 'Revenue','Profit']]
+                    'Purchase_Type_ID', 'Payment_Method_ID', 'Revenue','Profit']]
     
-    print(final_df)
+    #print(final_df)
     return final_df
 
 

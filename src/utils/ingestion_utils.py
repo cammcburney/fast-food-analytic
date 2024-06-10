@@ -37,7 +37,7 @@ def insert_data_into_database(dataframe, engine, table_name):
     """
     try:
         response = dataframe.to_sql(
-            table_name, engine, if_exists="replace", index=False
+            table_name, engine, if_exists="append", index=False
         )
 
         return response
