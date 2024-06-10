@@ -1,125 +1,103 @@
 from connection_utils import get_db_credentials, create_engine_connection
 import pandas as pd
 from sqlalchemy import text
-def manager_query():
-    creds = get_db_credentials("user")
-    query = 'SELECT DISTINCT "Manager", "Country", "City" FROM fast_food;'
-    engine = create_engine_connection(creds, switch=False)
 
+input_data = {
+            "credentials": "user",
+            "database_name": "fast_food",
+            "queries": {
+                        "Manager": ["Manager", "Country", "City"],
+                        "Product": ["Product", "Price", "Cost", "Profit/Unit"],
+                        "Purchase_Type": ["Purchase Type"],
+                        "Payment_Method": ["Payment Method"],
+                        "Fact": ["Order ID", "Date", "Product", "Price","Quantity", "Cost", "Profit/Unit", "City", "Country", "Manager", "Purchase Type", "Payment Method", "Revenue", "Profit"]
+                        }
+            }
+
+def process_query_with_engine(engine, query):
     with engine.connect() as conn:
         result = conn.execute(text(query))
         rows = result.fetchall()
-        
-    
-    df = pd.DataFrame(rows, columns=result.keys())
-    
-    
-    df.insert(0, 'Manager_id', range(1, 1 + len(df)))
-    
-    print(df)
-    return df
+    return result, rows
 
-def product_query():
-    creds = get_db_credentials("user")
-    query = 'SELECT DISTINCT "Product", "Price", "Cost", "Profit/Unit" FROM fast_food;'
+def query_function(credentials="user",
+                   database_name=None, 
+                   select_columns=None,
+                   id_column=None
+                   ):
+
+    columns_str = ", ".join([f'"{column}"' for column in select_columns])
+    creds = get_db_credentials(f"{credentials}")
+    query = f'SELECT DISTINCT {columns_str} FROM {database_name};'
     engine = create_engine_connection(creds, switch=False)
 
-    with engine.connect() as conn:
-        result = conn.execute(text(query))
-        rows = result.fetchall()
-        
-    
-    df = pd.DataFrame(rows, columns=result.keys())
-    
-    
-    df.insert(0, 'Product_id', range(1, 1 + len(df)))
-    
-    print(df)
-    return df
+    result, rows = process_query_with_engine(engine, query)
 
-def purchase_query():
-    creds = get_db_credentials("user")
-    query = 'SELECT DISTINCT "Purchase Type" FROM fast_food;'
-    engine = create_engine_connection(creds, switch=False)
+    dataframe = pd.DataFrame(rows, columns=result.keys())
+    
+    dataframe.insert(0, f"{id_column}_id", range(1, 1 + len(dataframe)))
+    
+    return dataframe
 
-    with engine.connect() as conn:
-        result = conn.execute(text(query))
-        rows = result.fetchall()
-        
-    
-    df = pd.DataFrame(rows, columns=result.keys())
-    
-    
-    df.insert(0, 'Purchase_Type_id', range(1, 1 + len(df)))
-    
-    print(df)
-    return df
+def collect_queries(query_input):
 
-def payment_method_query():
-    creds = get_db_credentials("user")
-    query = 'SELECT DISTINCT "Payment Method" FROM fast_food;'
-    engine = create_engine_connection(creds, switch=False)
+    credentials = query_input["credentials"]
+    database_name = query_input["database_name"]
+    queries = query_input["queries"]
+    
+    dataframe_dict = {}
 
-    with engine.connect() as conn:
-        result = conn.execute(text(query))
-        rows = result.fetchall()
-        
-    
-    df = pd.DataFrame(rows, columns=result.keys())
-    
-    
-    df.insert(0, 'Payment_id', range(1, 1 + len(df)))
-    
-    print(df)
-    return df
+    for id_name, query_list in queries.items():
+        dataframe = query_function(credentials, database_name, query_list, id_name)
+        dataframe_dict[id_name] = dataframe
 
-managers_df = manager_query()
-products_df = product_query()
-purchase_types_df = purchase_query()
-payment_methods_df = payment_method_query()
+    return dataframe_dict
 
-def combined_data_query():
-    creds = get_db_credentials("user")
-    query = '''
-    SELECT "Order ID", "Date", "Product", "Price","Quantity", "Cost", "Profit/Unit",
-           "City", "Country", "Manager", "Purchase Type", "Payment Method", "Revenue", "Profit"
-    FROM fast_food;
-    '''
-    engine = create_engine_connection(creds, switch=False)
+def rename_column(processed_dataframe, merge_on):
+    processed_dataframe.rename(columns={
+            f"{merge_on}_id": f"{merge_on}_ID",
+        }, inplace=True)
+    return processed_dataframe
+    
+def merge_dataframe(dataframe_dict, to_merge, merge_on, how="left"):
+    processed_df = dataframe_dict[to_merge]
+    on = list(dataframe_dict[merge_on].columns[1:])
+    suffixes = tuple(f"'', '_{merge_on}'")
+    processed_df = processed_df.merge(dataframe_dict[merge_on], on=on, how=how, suffixes=suffixes)
 
-    with engine.connect() as conn:
-        result = conn.execute(text(query))
-        rows = result.fetchall()
+    output_df = rename_column(processed_df, merge_on)
+    return output_df
 
-   
-    df = pd.DataFrame(rows, columns=result.keys())
-    
-    
-    df = df.merge(managers_df, on=["City", "Country", "Manager"], how='left', suffixes=('', '_manager'))
-    
-    
-    df = df.merge(products_df, on=["Product", "Price", "Cost", "Profit/Unit"], how='left', suffixes=('', '_product'))
-    
-    
-    df = df.merge(purchase_types_df, on=["Purchase Type"], how='left', suffixes=('', '_purchase_type'))
-    
-   
-    df = df.merge(payment_methods_df, on=["Payment Method"], how='left', suffixes=('', '_payment_method'))
+def gather_tables(query_input):
+    tables_to_process = []
+    for key, _ in query_input["queries"].items():
+        tables_to_process.append(key)
 
-   
-    df.rename(columns={
-        'Manager_id': 'Manager_ID',
-        'Product_id': 'Product_ID',
-        'Purchase_Type_id': 'Purchase_Type_ID',
-        'Payment_id': 'Payment_Method_ID'
-    }, inplace=True)
+    return tables_to_process
 
-  
-    final_df = df[['Order ID', 'Date', 'Product_ID', 'Price','Quantity', 'Cost', 'Profit/Unit', 'Manager_ID',
-                   'Country', 'Manager', 'Purchase_Type_ID', 'Payment_Method_ID', 'Revenue','Profit']]
+def create_fact_table(query_input):
     
-    print(final_df)
-    return final_df
+    dataframe_dict = collect_queries(query_input)
+    fact_name = "Fact"
 
+    tables_to_process = gather_tables(query_input)
 
-test = combined_data_query()
+    for table in tables_to_process:
+        if table != fact_name:
+            dataframe_dict[fact_name] = merge_dataframe(dataframe_dict, fact_name, table)
+            
+
+    for table in tables_to_process:
+        if table != fact_name:
+            drop_columns = [col for col in dataframe_dict[table].columns if col != f"{table}_id"]
+            dataframe_dict[fact_name].drop(columns=drop_columns, axis=1, inplace=True)
+
+    dataframe_dict['Fact'].drop(columns='Fact_id', axis=1, inplace=True)
+
+    return dataframe_dict
+
+df = create_fact_table(input_data)
+print(df['Product'])
+print(df['Purchase_Type'])
+print(df['Payment_Method'])
+print(df['Manager'])
