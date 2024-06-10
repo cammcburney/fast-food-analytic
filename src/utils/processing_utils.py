@@ -1,4 +1,4 @@
-from connection_utils import get_db_credentials, create_engine_connection
+from src.utils.connection_utils import get_db_credentials, create_engine_connection
 import pandas as pd
 from sqlalchemy import text
 
@@ -95,9 +95,3 @@ def create_fact_table(query_input):
     dataframe_dict['Fact'].drop(columns='Fact_id', axis=1, inplace=True)
 
     return dataframe_dict
-
-df = create_fact_table(input_data)
-print(df['Product'])
-print(df['Purchase_Type'])
-print(df['Payment_Method'])
-print(df['Manager'])

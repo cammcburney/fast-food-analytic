@@ -3,7 +3,7 @@ from src.utils.ingestion_utils import (
     read_data_file_into_dataframe,
     insert_data_into_database,
 )
-from src.utils.processing_utils import create_facts_table
+from src.utils.processing_utils import create_fact_table
 def ingestion():
     csv_file_path = "data/processed/fast-food-data-sample.csv"
 
@@ -20,4 +20,18 @@ def warehouse(df_dict):
     print(engine)
     insert =run_engine_to_insert_database(engine,df_dict)
     print(insert)
+
+input_data = {
+            "credentials": "user",
+            "database_name": "fast_food",
+            "queries": {
+                        "Manager": ["Manager", "Country", "City"],
+                        "Product": ["Product", "Price", "Cost", "Profit/Unit"],
+                        "Purchase_Type": ["Purchase Type"],
+                        "Payment_Method": ["Payment Method"],
+                        "Fact": ["Order ID", "Date", "Product", "Price","Quantity", "Cost", "Profit/Unit", "City", "Country", "Manager", "Purchase Type", "Payment Method", "Revenue", "Profit"]
+                        }
+            }
+
+test=warehouse(create_fact_table(input_data))
     
