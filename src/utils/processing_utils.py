@@ -14,7 +14,7 @@ def manager_query():
     df = pd.DataFrame(rows, columns=result.keys())
     
     
-    df.insert(0, 'manager_id', range(1, 1 + len(df)))
+    df.insert(0, 'Manager_id', range(1, 1 + len(df)))
     
     print(df)
     return df
@@ -32,7 +32,7 @@ def product_query():
     df = pd.DataFrame(rows, columns=result.keys())
     
     
-    df.insert(0, 'product_id', range(1, 1 + len(df)))
+    df.insert(0, 'Product_id', range(1, 1 + len(df)))
     
     print(df)
     return df
@@ -50,7 +50,7 @@ def purchase_query():
     df = pd.DataFrame(rows, columns=result.keys())
     
     
-    df.insert(0, 'purchase_type_id', range(1, 1 + len(df)))
+    df.insert(0, 'Purchase_Type_id', range(1, 1 + len(df)))
     
     print(df)
     return df
@@ -68,7 +68,7 @@ def payment_method_query():
     df = pd.DataFrame(rows, columns=result.keys())
     
     
-    df.insert(0, 'payment_id', range(1, 1 + len(df)))
+    df.insert(0, 'Payment_id', range(1, 1 + len(df)))
     
     print(df)
     return df
@@ -108,15 +108,15 @@ def combined_data_query():
 
    
     df.rename(columns={
-        'manager_id': 'manager_id',
-        'product_id': 'product_id',
-        'purchase_type_id': 'purchase_type_id',
-        'payment_id': 'payment_method_id'
+        'Manager_id': 'Manager_ID',
+        'Product_id': 'Product_ID',
+        'Purchase_Type_id': 'Purchase_Type_ID',
+        'Payment_id': 'Payment_Method_ID'
     }, inplace=True)
 
   
-    final_df = df[['Order ID', 'Date', 'product_id', 'Price','Quantity', 'Cost', 'Profit/Unit', 'manager_id',
-                   'Country', 'Manager', 'purchase_type_id', 'payment_method_id', 'Revenue','Profit']]
+    final_df = df[['Order ID', 'Date', 'Product_ID', 'Price','Quantity', 'Cost', 'Profit/Unit', 'Manager_ID',
+                   'Country', 'Manager', 'Purchase_Type_ID', 'Payment_Method_ID', 'Revenue','Profit']]
     
     print(final_df)
     return final_df
