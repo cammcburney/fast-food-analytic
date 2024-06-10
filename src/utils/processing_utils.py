@@ -9,7 +9,7 @@ input_data = {
                         "Manager": ["Manager", "Country", "City"],
                         "Product": ["Product", "Price", "Cost", "Profit/Unit"],
                         "Purchase_Type": ["Purchase Type"],
-                        "Payment": ["Payment Method"],
+                        "Payment_Method": ["Payment Method"],
                         "Fact": ["Order ID", "Date", "Product", "Price","Quantity", "Cost", "Profit/Unit", "City", "Country", "Manager", "Purchase Type", "Payment Method", "Revenue", "Profit"]
                         }
             }
@@ -55,28 +55,49 @@ def collect_queries(query_input):
 
 def rename_column(processed_dataframe, merge_on):
     processed_dataframe.rename(columns={
-            f"{merge_on}_id": f"{merge_on}_id.".upper(),
+            f"{merge_on}_id": f"{merge_on}_ID",
         }, inplace=True)
+    return processed_dataframe
     
 def merge_dataframe(dataframe_dict, to_merge, merge_on, how="left"):
     processed_df = dataframe_dict[to_merge]
     on = list(dataframe_dict[merge_on].columns[1:])
-    suffixes = tuple(f"_{merge_on.lower()}")
+    suffixes = tuple(f"'', '_{merge_on}'")
     processed_df = processed_df.merge(dataframe_dict[merge_on], on=on, how=how, suffixes=suffixes)
-    return processed_df
+
+    output_df = rename_column(processed_df, merge_on)
+    return output_df
+
+def gather_tables(query_input):
+    tables_to_process = []
+    for key, _ in query_input["queries"].items():
+        tables_to_process.append(key)
+
+    return tables_to_process
 
 def create_fact_table(query_input):
     
     dataframe_dict = collect_queries(query_input)
+    fact_name = "Fact"
 
-    processed_dataframe = merge_dataframe(dataframe_dict, "Fact", "Manager")
+    tables_to_process = gather_tables(query_input)
 
-    df = rename_column(processed_dataframe, "Manager")
+    for table in tables_to_process:
+        if table != fact_name:
+            dataframe_dict[fact_name] = merge_dataframe(dataframe_dict, fact_name, table)
+            
 
-    final_df = df[['Order ID', 'Date', 'Product_ID', 'Price','Quantity', 'Cost', 'Profit/Unit', 'Manager_ID',
-                   'Country', 'Manager', 'Purchase_Type_ID', 'Payment_Method_ID', 'Revenue','Profit']]
-    
-    print(final_df)
-    return final_df
+    for table in tables_to_process:
+        if table != fact_name:
+            drop_columns = [col for col in dataframe_dict[table].columns if col != f"{table}_id"]
+            dataframe_dict[fact_name].drop(columns=drop_columns, axis=1, inplace=True)
 
-create_fact_table(input_data)
+    dataframe_dict['Fact'].drop(columns='Fact_id', axis=1, inplace=True)
+
+    return dataframe_dict
+
+df = create_fact_table(input_data)
+print(df['Product'])
+print(df['Purchase_Type'])
+print(df['Payment_Method'])
+print(df['Manager'])
