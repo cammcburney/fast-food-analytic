@@ -1,0 +1,250 @@
+Order ID,Date,Product,Price,Quantity,Cost,Profit/Unit,City,Country,Purchase Type,Payment Method,Manager,Revenue,Profit
+10455,08/11/2022,Burgers,12.99,570,4.32,8.67,Berlin,Germany,In-store , Credit Card,Walter Muller,7404.3,4941.9
+10460,09/11/2022,Burgers,12.99,555,4.32,8.67,Berlin,Germany,In-store , Credit Card,Walter Muller,7209.45,4811.85
+10465,10/11/2022,Burgers,12.99,555,4.32,8.67,Madrid,Spain,In-store , Credit Card,Pablo Perez,7209.45,4811.85
+10470,11/11/2022,Burgers,12.99,555,4.32,8.67,Madrid,Spain,In-store , Credit Card,Pablo Perez,7209.45,4811.85
+10475,12/11/2022,Burgers,12.99,524,4.32,8.67,Madrid,Spain,In-store , Credit Card,Pablo Perez,6806.76,4543.08
+10480,13/11/2022,Burgers,12.99,509,4.32,8.67,Madrid,Spain,In-store , Credit Card,Pablo Perez,6611.91,4413.03
+10490,15/11/2022,Burgers,12.99,509,4.32,8.67,Madrid,Spain,In-store , Credit Card,Pablo Perez,6611.91,4413.03
+10495,16/11/2022,Burgers,12.99,509,4.32,8.67,Madrid,Spain,In-store , Credit Card,Pablo Perez,6611.91,4413.03
+10500,17/11/2022,Burgers,12.99,524,4.32,8.67,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,6806.76,4543.08
+10505,18/11/2022,Burgers,12.99,539,4.32,8.67,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,7001.61,4673.13
+10510,19/11/2022,Burgers,12.99,509,4.32,8.67,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,6611.91,4413.03
+10515,20/11/2022,Burgers,12.99,478,4.32,8.67,Lisbon,Portugal,Drive-thru , Cash,Joao Silva,6209.22,4144.26
+10520,21/11/2022,Burgers,12.99,493,4.32,8.67,Paris,France,Drive-thru , Cash,Remy Monet,6404.07,4274.31
+10525,22/11/2022,Burgers,12.99,462,4.32,8.67,Paris,France,Drive-thru , Cash,Remy Monet,6001.38,4005.54
+10530,23/11/2022,Burgers,12.99,478,4.32,8.67,Paris,France,Drive-thru , Cash,Remy Monet,6209.22,4144.26
+10535,24/11/2022,Burgers,12.99,478,4.32,8.67,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,6209.22,4144.26
+10540,25/11/2022,Burgers,12.99,462,4.32,8.67,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,6001.38,4005.54
+10545,26/11/2022,Burgers,12.99,447,4.32,8.67,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,5806.53,3875.49
+10550,27/11/2022,Burgers,12.99,462,4.32,8.67,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,6001.38,4005.54
+10555,28/11/2022,Burgers,12.99,478,4.32,8.67,London,United Kingdom,Online , Credit Card,Tom Jackson,6209.22,4144.26
+10560,29/11/2022,Burgers,12.99,478,4.32,8.67,London,United Kingdom,Online , Credit Card,Tom Jackson,6209.22,4144.26
+10565,30/11/2022,Burgers,12.99,493,4.32,8.67,London,United Kingdom,Online , Credit Card,Tom Jackson,6404.07,4274.31
+10570,01/12/2022,Burgers,12.99,493,4.32,8.67,London,United Kingdom,Online , Credit Card,Tom Jackson,6404.07,4274.31
+10575,02/12/2022,Burgers,12.99,524,4.32,8.67,Paris,France,Online , Credit Card,Remy Monet,6806.76,4543.08
+10580,03/12/2022,Burgers,12.99,524,4.32,8.67,Paris,France,Online , Credit Card,Remy Monet,6806.76,4543.08
+10585,04/12/2022,Burgers,12.99,539,4.32,8.67,London,United Kingdom,Online , Credit Card,Tom Jackson,7001.61,4673.13
+10590,05/12/2022,Burgers,12.99,555,4.32,8.67,London,United Kingdom,Online , Credit Card,Tom Jackson,7209.45,4811.85
+10595,06/12/2022,Burgers,12.99,539,4.32,8.67,London,United Kingdom,Online , Credit Card,Tom Jackson,7001.61,4673.13
+10600,07/12/2022,Burgers,12.99,524,4.32,8.67,London,United Kingdom,Online , Credit Card,Tom Jackson,6806.76,4543.08
+10605,08/12/2022,Burgers,12.99,539,4.32,8.67,London,United Kingdom,Online , Cash,Tom Jackson,7001.61,4673.13
+10610,09/12/2022,Burgers,12.99,570,4.32,8.67,London,United Kingdom,Online , Gift Card,Tom Jackson,7404.3,4941.9
+10615,10/12/2022,Burgers,12.99,570,4.32,8.67,London,United Kingdom,Online , Gift Card,Tom Jackson,7404.3,4941.9
+10620,11/12/2022,Burgers,12.99,586,4.32,8.67,London,United Kingdom,Online , Gift Card,Tom Jackson,7612.14,5080.62
+10625,12/12/2022,Burgers,12.99,570,4.32,8.67,London,United Kingdom,Online , Gift Card,Tom Jackson,7404.3,4941.9
+10630,13/12/2022,Burgers,12.99,570,4.32,8.67,Lisbon,Portugal,Online , Cash,Joao Silva,7404.3,4941.9
+10635,14/12/2022,Burgers,12.99,555,4.32,8.67,Lisbon,Portugal,Online , Gift Card,Joao Silva,7209.45,4811.85
+10640,15/12/2022,Burgers,12.99,539,4.32,8.67,Lisbon,Portugal,Online , Gift Card,Joao Silva,7001.61,4673.13
+10645,16/12/2022,Burgers,12.99,570,4.32,8.67,Lisbon,Portugal,Online , Cash,Joao Silva,7404.3,4941.9
+10650,17/12/2022,Burgers,12.99,586,4.32,8.67,Lisbon,Portugal,Online , Gift Card,Joao Silva,7612.14,5080.62
+10655,18/12/2022,Burgers,12.99,601,4.32,8.67,Lisbon,Portugal,Online , Gift Card,Joao Silva,7806.99,5210.67
+10660,19/12/2022,Burgers,12.99,632,4.32,8.67,Lisbon,Portugal,In-store , Cash,Joao Silva,8209.68,5479.44
+10665,20/12/2022,Burgers,12.99,647,4.32,8.67,Lisbon,Portugal,In-store , Cash,Joao Silva,8404.53,5609.49
+10670,21/12/2022,Burgers,12.99,678,4.32,8.67,Lisbon,Portugal,In-store , Cash,Joao Silva,8807.22,5878.26
+10675,22/12/2022,Burgers,12.99,678,4.32,8.67,Lisbon,Portugal,In-store , Cash,Joao Silva,8807.22,5878.26
+10680,23/12/2022,Burgers,12.99,647,4.32,8.67,Lisbon,Portugal,In-store , Cash,Joao Silva,8404.53,5609.49
+10685,24/12/2022,Burgers,12.99,678,4.32,8.67,Lisbon,Portugal,In-store , Cash,Joao Silva,8807.22,5878.26
+10690,25/12/2022,Burgers,12.99,678,4.32,8.67,Berlin,Germany,In-store , Cash,Walter Muller,8807.22,5878.26
+10695,26/12/2022,Burgers,12.99,693,4.32,8.67,Berlin,Germany,In-store , Cash,Walter Muller,9002.07,6008.31
+10700,27/12/2022,Burgers,12.99,693,4.32,8.67,Berlin,Germany,In-store , Cash,Walter Muller,9002.07,6008.31
+10705,28/12/2022,Burgers,12.99,724,4.32,8.67,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,9404.76,6277.08
+10710,29/12/2022,Burgers,12.99,755,4.32,8.67,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,9807.45,6545.85
+10456,08/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Berlin,Germany,In-store , Credit Card,Walter Muller,2009.9,1434.2
+10461,09/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Paris,France,In-store , Credit Card,Remy Monet,2009.9,1434.2
+10466,10/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Madrid,Spain,In-store , Credit Card,Pablo Perez,2009.9,1434.2
+10471,11/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Madrid,Spain,In-store , Credit Card,Pablo Perez,2009.9,1434.2
+10476,12/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Madrid,Spain,In-store , Credit Card,Pablo Perez,2009.9,1434.2
+10481,13/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Madrid,Spain,In-store , Credit Card,Pablo Perez,2009.9,1434.2
+10491,15/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Madrid,Spain,In-store , Credit Card,Pablo Perez,2009.9,1434.2
+10496,16/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Madrid,Spain,In-store , Credit Card,Pablo Perez,2009.9,1434.2
+10501,17/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2009.9,1434.2
+10506,18/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2009.9,1434.2
+10511,19/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Lisbon,Portugal,Drive-thru , Credit Card,Joao Silva,2009.9,1434.2
+10516,20/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Lisbon,Portugal,Drive-thru , Cash,Joao Silva,2009.9,1434.2
+10521,21/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Paris,France,Drive-thru , Cash,Remy Monet,2009.9,1434.2
+10526,22/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Paris,France,Drive-thru , Cash,Remy Monet,2009.9,1434.2
+10531,23/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Paris,France,Drive-thru , Cash,Remy Monet,2009.9,1434.2
+10536,24/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2009.9,1434.2
+10541,25/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,2009.9,1434.2
+10546,26/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,2009.9,1434.2
+10551,27/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,2009.9,1434.2
+10556,28/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Credit Card,Tom Jackson,2009.9,1434.2
+10561,29/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Credit Card,Tom Jackson,2009.9,1434.2
+10566,30/11/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Credit Card,Tom Jackson,2009.9,1434.2
+10571,01/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Credit Card,Tom Jackson,2009.9,1434.2
+10576,02/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Paris,France,Online , Credit Card,Remy Monet,2009.9,1434.2
+10581,03/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Paris,France,Online , Credit Card,Remy Monet,2009.9,1434.2
+10586,04/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Credit Card,Tom Jackson,2009.9,1434.2
+10591,05/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Credit Card,Tom Jackson,2009.9,1434.2
+10596,06/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Credit Card,Tom Jackson,2009.9,1434.2
+10601,07/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Credit Card,Tom Jackson,2009.9,1434.2
+10606,08/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Cash,Tom Jackson,2009.9,1434.2
+10611,09/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Gift Card,Tom Jackson,2009.9,1434.2
+10616,10/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Gift Card,Tom Jackson,2009.9,1434.2
+10621,11/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Gift Card,Tom Jackson,2009.9,1434.2
+10626,12/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,London,United Kingdom,Online , Gift Card,Tom Jackson,2009.9,1434.2
+10631,13/12/2022,Chicken Sandwiches,9.95,202,2.85,7.1,Lisbon,Portugal,Online , Gift Card,Joao Silva,2009.9,1434.2
+10636,14/12/2022,Chicken Sandwiches,9.95,222,2.85,7.1,Lisbon,Portugal,Online , Gift Card,Joao Silva,2208.9,1576.2
+10641,15/12/2022,Chicken Sandwiches,9.95,222,2.85,7.1,Lisbon,Portugal,Online , Gift Card,Joao Silva,2208.9,1576.2
+10646,16/12/2022,Chicken Sandwiches,9.95,222,2.85,7.1,Lisbon,Portugal,Online , Cash,Joao Silva,2208.9,1576.2
+10651,17/12/2022,Chicken Sandwiches,9.95,222,2.85,7.1,Lisbon,Portugal,Online , Gift Card,Joao Silva,2208.9,1576.2
+10656,18/12/2022,Chicken Sandwiches,9.95,222,2.85,7.1,Lisbon,Portugal,Online , Gift Card,Joao Silva,2208.9,1576.2
+10661,19/12/2022,Chicken Sandwiches,9.95,222,2.85,7.1,Lisbon,Portugal,In-store , Cash,Joao Silva,2208.9,1576.2
+10666,20/12/2022,Chicken Sandwiches,9.95,222,2.85,7.1,Lisbon,Portugal,In-store , Cash,Joao Silva,2208.9,1576.2
+10671,21/12/2022,Chicken Sandwiches,9.95,222,2.85,7.1,Lisbon,Portugal,In-store , Cash,Joao Silva,2208.9,1576.2
+10676,22/12/2022,Chicken Sandwiches,9.95,242,2.85,7.1,Lisbon,Portugal,In-store , Cash,Joao Silva,2407.9,1718.2
+10681,23/12/2022,Chicken Sandwiches,9.95,242,2.85,7.1,Lisbon,Portugal,In-store , Cash,Joao Silva,2407.9,1718.2
+10686,24/12/2022,Chicken Sandwiches,9.95,242,2.85,7.1,Lisbon,Portugal,In-store , Cash,Joao Silva,2407.9,1718.2
+10691,25/12/2022,Chicken Sandwiches,9.95,262,2.85,7.1,Berlin,Germany,In-store , Cash,Walter Muller,2606.9,1860.2
+10696,26/12/2022,Chicken Sandwiches,9.95,282,2.85,7.1,Berlin,Germany,In-store , Cash,Walter Muller,2805.9,2002.2
+10701,27/12/2022,Chicken Sandwiches,9.95,282,2.85,7.1,Berlin,Germany,In-store , Cash,Walter Muller,2805.9,2002.2
+10706,28/12/2022,Chicken Sandwiches,9.95,302,2.85,7.1,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,3004.9,2144.2
+10711,29/12/2022,Chicken Sandwiches,9.95,282,2.85,7.1,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,2805.9,2002.2
+10454,07/11/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,In-store , Gift Card,Joao Silva,1002.99,550.74
+10459,08/11/2022,Sides & Other,4.99,201,2.25,2.74,Paris,France,In-store , Credit Card,Remy Monet,1002.99,550.74
+10464,09/11/2022,Sides & Other,4.99,201,2.25,2.74,Paris,France,In-store , Credit Card,Remy Monet,1002.99,550.74
+10474,11/11/2022,Sides & Other,4.99,201,2.25,2.74,Madrid,Spain,In-store , Credit Card,Pablo Perez,1002.99,550.74
+10479,12/11/2022,Sides & Other,4.99,201,2.25,2.74,Madrid,Spain,In-store , Credit Card,Pablo Perez,1002.99,550.74
+10489,14/11/2022,Sides & Other,4.99,201,2.25,2.74,Madrid,Spain,In-store , Credit Card,Pablo Perez,1002.99,550.74
+10494,15/11/2022,Sides & Other,4.99,201,2.25,2.74,Madrid,Spain,In-store , Credit Card,Pablo Perez,1002.99,550.74
+10499,16/11/2022,Sides & Other,4.99,201,2.25,2.74,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,1002.99,550.74
+10504,17/11/2022,Sides & Other,4.99,201,2.25,2.74,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,1002.99,550.74
+10509,18/11/2022,Sides & Other,4.99,201,2.25,2.74,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,1002.99,550.74
+10514,19/11/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,Drive-thru , Cash,Joao Silva,1002.99,550.74
+10524,21/11/2022,Sides & Other,4.99,201,2.25,2.74,Paris,France,Drive-thru , Cash,Remy Monet,1002.99,550.74
+10529,22/11/2022,Sides & Other,4.99,201,2.25,2.74,Paris,France,Drive-thru , Cash,Remy Monet,1002.99,550.74
+10534,23/11/2022,Sides & Other,4.99,201,2.25,2.74,Madrid,Spain,Drive-thru , Cash,Pablo Perez,1002.99,550.74
+10539,24/11/2022,Sides & Other,4.99,201,2.25,2.74,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,1002.99,550.74
+10544,25/11/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,1002.99,550.74
+10549,26/11/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,1002.99,550.74
+10554,27/11/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Credit Card,Tom Jackson,1002.99,550.74
+10559,28/11/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Credit Card,Tom Jackson,1002.99,550.74
+10564,29/11/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Credit Card,Tom Jackson,1002.99,550.74
+10569,30/11/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Credit Card,Tom Jackson,1002.99,550.74
+10574,01/12/2022,Sides & Other,4.99,201,2.25,2.74,Paris,France,Online , Credit Card,Remy Monet,1002.99,550.74
+10579,02/12/2022,Sides & Other,4.99,201,2.25,2.74,Paris,France,Online , Credit Card,Remy Monet,1002.99,550.74
+10584,03/12/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Credit Card,Tom Jackson,1002.99,550.74
+10594,05/12/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Credit Card,Tom Jackson,1002.99,550.74
+10599,06/12/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Credit Card,Tom Jackson,1002.99,550.74
+10604,07/12/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Cash,Tom Jackson,1002.99,550.74
+10609,08/12/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Gift Card,Tom Jackson,1002.99,550.74
+10614,09/12/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Gift Card,Tom Jackson,1002.99,550.74
+10619,10/12/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Gift Card,Tom Jackson,1002.99,550.74
+10624,11/12/2022,Sides & Other,4.99,201,2.25,2.74,London,United Kingdom,Online , Gift Card,Tom Jackson,1002.99,550.74
+10629,12/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,Online , Gift Card,Joao Silva,1002.99,550.74
+10634,13/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,Online , Gift Card,Joao Silva,1002.99,550.74
+10639,14/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,Online , Gift Card,Joao Silva,1002.99,550.74
+10644,15/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,Online , Cash,Joao Silva,1002.99,550.74
+10649,16/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,Online , Gift Card,Joao Silva,1002.99,550.74
+10654,17/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,Online , Gift Card,Joao Silva,1002.99,550.74
+10659,18/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,Online , Cash,Joao Silva,1002.99,550.74
+10664,19/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,In-store , Cash,Joao Silva,1002.99,550.74
+10669,20/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,In-store , Cash,Joao Silva,1002.99,550.74
+10674,21/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,In-store , Cash,Joao Silva,1002.99,550.74
+10679,22/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,In-store , Cash,Joao Silva,1002.99,550.74
+10684,23/12/2022,Sides & Other,4.99,201,2.25,2.74,Lisbon,Portugal,In-store , Cash,Joao Silva,1002.99,550.74
+10689,24/12/2022,Sides & Other,4.99,201,2.25,2.74,Berlin,Germany,In-store , Cash,Walter Muller,1002.99,550.74
+10694,25/12/2022,Sides & Other,4.99,201,2.25,2.74,Berlin,Germany,In-store , Cash,Walter Muller,1002.99,550.74
+10699,26/12/2022,Sides & Other,4.99,201,2.25,2.74,Berlin,Germany,In-store , Cash,Walter Muller,1002.99,550.74
+10704,27/12/2022,Sides & Other,4.99,201,2.25,2.74,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,1002.99,550.74
+10709,28/12/2022,Sides & Other,4.99,201,2.25,2.74,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,1002.99,550.74
+10452,07/11/2022,Fries,3.49,574,0.88,2.61,London,United Kingdom,Online , Gift Card,Tom Jackson,2003.26,1498.14
+10457,08/11/2022,Fries,3.49,574,0.88,2.61,Paris,France,In-store , Credit Card,Remy Monet,2003.26,1498.14
+10462,09/11/2022,Fries,3.49,574,0.88,2.61,Paris,France,In-store , Credit Card,Remy Monet,2003.26,1498.14
+10467,10/11/2022,Fries,3.49,574,0.88,2.61,Madrid,Spain,In-store , Credit Card,Pablo Perez,2003.26,1498.14
+10472,11/11/2022,Fries,3.49,631,0.88,2.61,Madrid,Spain,In-store , Credit Card,Pablo Perez,2202.19,1646.91
+10477,12/11/2022,Fries,3.49,631,0.88,2.61,Madrid,Spain,In-store , Credit Card,Pablo Perez,2202.19,1646.91
+10487,14/11/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,In-store , Credit Card,Joao Silva,2202.19,1646.91
+10492,15/11/2022,Fries,3.49,574,0.88,2.61,Madrid,Spain,In-store , Credit Card,Pablo Perez,2003.26,1498.14
+10497,16/11/2022,Fries,3.49,574,0.88,2.61,Madrid,Spain,In-store , Credit Card,Pablo Perez,2003.26,1498.14
+10502,17/11/2022,Fries,3.49,631,0.88,2.61,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2202.19,1646.91
+10507,18/11/2022,Fries,3.49,688,0.88,2.61,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2401.12,1795.68
+10512,19/11/2022,Fries,3.49,688,0.88,2.61,Lisbon,Portugal,Drive-thru , Credit Card,Joao Silva,2401.12,1795.68
+10522,21/11/2022,Fries,3.49,688,0.88,2.61,Paris,France,Drive-thru , Cash,Remy Monet,2401.12,1795.68
+10527,22/11/2022,Fries,3.49,688,0.88,2.61,Paris,France,Drive-thru , Cash,Remy Monet,2401.12,1795.68
+10532,23/11/2022,Fries,3.49,688,0.88,2.61,Lisbon,Portugal,Drive-thru , Cash,Joao Silva,2401.12,1795.68
+10537,24/11/2022,Fries,3.49,631,0.88,2.61,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2202.19,1646.91
+10542,25/11/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,2202.19,1646.91
+10547,26/11/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,2202.19,1646.91
+10552,27/11/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Credit Card,Tom Jackson,2202.19,1646.91
+10557,28/11/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Credit Card,Tom Jackson,2202.19,1646.91
+10562,29/11/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Credit Card,Tom Jackson,2202.19,1646.91
+10567,30/11/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Credit Card,Tom Jackson,2202.19,1646.91
+10572,01/12/2022,Fries,3.49,574,0.88,2.61,Paris,France,Online , Credit Card,Remy Monet,2003.26,1498.14
+10577,02/12/2022,Fries,3.49,631,0.88,2.61,Paris,France,Online , Credit Card,Remy Monet,2202.19,1646.91
+10582,03/12/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Credit Card,Tom Jackson,2202.19,1646.91
+10592,05/12/2022,Fries,3.49,574,0.88,2.61,London,United Kingdom,Online , Credit Card,Tom Jackson,2003.26,1498.14
+10597,06/12/2022,Fries,3.49,574,0.88,2.61,London,United Kingdom,Online , Credit Card,Tom Jackson,2003.26,1498.14
+10602,07/12/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Cash,Tom Jackson,2202.19,1646.91
+10607,08/12/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Cash,Tom Jackson,2202.19,1646.91
+10612,09/12/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Gift Card,Tom Jackson,2202.19,1646.91
+10617,10/12/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Gift Card,Tom Jackson,2202.19,1646.91
+10622,11/12/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Gift Card,Tom Jackson,2202.19,1646.91
+10627,12/12/2022,Fries,3.49,631,0.88,2.61,London,United Kingdom,Online , Gift Card,Tom Jackson,2202.19,1646.91
+10632,13/12/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,Online , Gift Card,Joao Silva,2202.19,1646.91
+10637,14/12/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,Online , Gift Card,Joao Silva,2202.19,1646.91
+10642,15/12/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,Online , Cash,Joao Silva,2202.19,1646.91
+10647,16/12/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,Online , Gift Card,Joao Silva,2202.19,1646.91
+10652,17/12/2022,Fries,3.49,688,0.88,2.61,Lisbon,Portugal,Online , Gift Card,Joao Silva,2401.12,1795.68
+10657,18/12/2022,Fries,3.49,688,0.88,2.61,Lisbon,Portugal,Online , Gift Card,Joao Silva,2401.12,1795.68
+10662,19/12/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,In-store , Cash,Joao Silva,2202.19,1646.91
+10667,20/12/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,In-store , Cash,Joao Silva,2202.19,1646.91
+10672,21/12/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,In-store , Cash,Joao Silva,2202.19,1646.91
+10677,22/12/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,In-store , Cash,Joao Silva,2202.19,1646.91
+10682,23/12/2022,Fries,3.49,631,0.88,2.61,Lisbon,Portugal,In-store , Cash,Joao Silva,2202.19,1646.91
+10687,24/12/2022,Fries,3.49,631,0.88,2.61,Berlin,Germany,In-store , Cash,Walter Muller,2202.19,1646.91
+10692,25/12/2022,Fries,3.49,631,0.88,2.61,Berlin,Germany,In-store , Cash,Walter Muller,2202.19,1646.91
+10697,26/12/2022,Fries,3.49,631,0.88,2.61,Berlin,Germany,In-store , Cash,Walter Muller,2202.19,1646.91
+10702,27/12/2022,Fries,3.49,631,0.88,2.61,Berlin,Germany,In-store , Cash,Walter Muller,2202.19,1646.91
+10707,28/12/2022,Fries,3.49,631,0.88,2.61,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,2202.19,1646.91
+10712,29/12/2022,Fries,3.49,631,0.88,2.61,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,2202.19,1646.91
+10453,07/11/2022,Beverages,2.95,746,0.47,2.48,Madrid,Spain,Online , Gift Card,Pablo Perez,2200.7,1850.08
+10463,09/11/2022,Beverages,2.95,678,0.47,2.48,Paris,France,In-store , Credit Card,Remy Monet,2000.1,1681.44
+10468,10/11/2022,Beverages,2.95,678,0.47,2.48,Madrid,Spain,In-store , Credit Card,Pablo Perez,2000.1,1681.44
+10473,11/11/2022,Beverages,2.95,678,0.47,2.48,Madrid,Spain,In-store , Credit Card,Pablo Perez,2000.1,1681.44
+10478,12/11/2022,Beverages,2.95,678,0.47,2.48,Madrid,Spain,In-store , Credit Card,Pablo Perez,2000.1,1681.44
+10488,14/11/2022,Beverages,2.95,678,0.47,2.48,Lisbon,Portugal,In-store , Credit Card,Joao Silva,2000.1,1681.44
+10493,15/11/2022,Beverages,2.95,678,0.47,2.48,Madrid,Spain,In-store , Credit Card,Pablo Perez,2000.1,1681.44
+10498,16/11/2022,Beverages,2.95,678,0.47,2.48,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2000.1,1681.44
+10503,17/11/2022,Beverages,2.95,678,0.47,2.48,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2000.1,1681.44
+10508,18/11/2022,Beverages,2.95,678,0.47,2.48,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2000.1,1681.44
+10513,19/11/2022,Beverages,2.95,678,0.47,2.48,Lisbon,Portugal,Drive-thru , Cash,Joao Silva,2000.1,1681.44
+10523,21/11/2022,Beverages,2.95,746,0.47,2.48,Paris,France,Drive-thru , Cash,Remy Monet,2200.7,1850.08
+10528,22/11/2022,Beverages,2.95,746,0.47,2.48,Paris,France,Drive-thru , Cash,Remy Monet,2200.7,1850.08
+10533,23/11/2022,Beverages,2.95,746,0.47,2.48,Lisbon,Portugal,Drive-thru , Cash,Joao Silva,2200.7,1850.08
+10538,24/11/2022,Beverages,2.95,746,0.47,2.48,Madrid,Spain,Drive-thru , Credit Card,Pablo Perez,2200.7,1850.08
+10543,25/11/2022,Beverages,2.95,746,0.47,2.48,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,2200.7,1850.08
+10548,26/11/2022,Beverages,2.95,746,0.47,2.48,London,United Kingdom,Drive-thru , Credit Card,Tom Jackson,2200.7,1850.08
+10553,27/11/2022,Beverages,2.95,746,0.47,2.48,London,United Kingdom,Online , Credit Card,Tom Jackson,2200.7,1850.08
+10558,28/11/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Credit Card,Tom Jackson,2000.1,1681.44
+10563,29/11/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Credit Card,Tom Jackson,2000.1,1681.44
+10568,30/11/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Credit Card,Tom Jackson,2000.1,1681.44
+10573,01/12/2022,Beverages,2.95,678,0.47,2.48,Paris,France,Online , Credit Card,Remy Monet,2000.1,1681.44
+10578,02/12/2022,Beverages,2.95,678,0.47,2.48,Paris,France,Online , Credit Card,Remy Monet,2000.1,1681.44
+10583,03/12/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Credit Card,Tom Jackson,2000.1,1681.44
+10593,05/12/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Credit Card,Tom Jackson,2000.1,1681.44
+10598,06/12/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Credit Card,Tom Jackson,2000.1,1681.44
+10603,07/12/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Cash,Tom Jackson,2000.1,1681.44
+10608,08/12/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Gift Card,Tom Jackson,2000.1,1681.44
+10613,09/12/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Gift Card,Tom Jackson,2000.1,1681.44
+10618,10/12/2022,Beverages,2.95,678,0.47,2.48,London,United Kingdom,Online , Gift Card,Tom Jackson,2000.1,1681.44
+10623,11/12/2022,Beverages,2.95,746,0.47,2.48,London,United Kingdom,Online , Gift Card,Tom Jackson,2200.7,1850.08
+10628,12/12/2022,Beverages,2.95,678,0.47,2.48,Lisbon,Portugal,Online , Gift Card,Joao Silva,2000.1,1681.44
+10633,13/12/2022,Beverages,2.95,678,0.47,2.48,Lisbon,Portugal,Online , Gift Card,Joao Silva,2000.1,1681.44
+10638,14/12/2022,Beverages,2.95,678,0.47,2.48,Lisbon,Portugal,Online , Gift Card,Joao Silva,2000.1,1681.44
+10643,15/12/2022,Beverages,2.95,678,0.47,2.48,Lisbon,Portugal,Online , Cash,Joao Silva,2000.1,1681.44
+10648,16/12/2022,Beverages,2.95,746,0.47,2.48,Lisbon,Portugal,Online , Gift Card,Joao Silva,2200.7,1850.08
+10653,17/12/2022,Beverages,2.95,746,0.47,2.48,Lisbon,Portugal,Online , Gift Card,Joao Silva,2200.7,1850.08
+10658,18/12/2022,Beverages,2.95,746,0.47,2.48,Lisbon,Portugal,Online , Cash,Joao Silva,2200.7,1850.08
+10663,19/12/2022,Beverages,2.95,746,0.47,2.48,Lisbon,Portugal,In-store , Cash,Joao Silva,2200.7,1850.08
+10668,20/12/2022,Beverages,2.95,746,0.47,2.48,Lisbon,Portugal,In-store , Cash,Joao Silva,2200.7,1850.08
+10673,21/12/2022,Beverages,2.95,746,0.47,2.48,Lisbon,Portugal,In-store , Cash,Joao Silva,2200.7,1850.08
+10678,22/12/2022,Beverages,2.95,746,0.47,2.48,Lisbon,Portugal,In-store , Cash,Joao Silva,2200.7,1850.08
+10683,23/12/2022,Beverages,2.95,678,0.47,2.48,Lisbon,Portugal,In-store , Cash,Joao Silva,2000.1,1681.44
+10688,24/12/2022,Beverages,2.95,678,0.47,2.48,Berlin,Germany,In-store , Cash,Walter Muller,2000.1,1681.44
+10693,25/12/2022,Beverages,2.95,678,0.47,2.48,Berlin,Germany,In-store , Cash,Walter Muller,2000.1,1681.44
+10698,26/12/2022,Beverages,2.95,678,0.47,2.48,Berlin,Germany,In-store , Cash,Walter Muller,2000.1,1681.44
+10703,27/12/2022,Beverages,2.95,678,0.47,2.48,Berlin,Germany,In-store , Gift Card,Walter Muller,2000.1,1681.44
+10708,28/12/2022,Beverages,2.95,678,0.47,2.48,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,2000.1,1681.44
+10713,29/12/2022,Beverages,2.95,678,0.47,2.48,Berlin,Germany,Drive-thru , Gift Card,Walter Muller,2000.1,1681.44

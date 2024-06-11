@@ -55,7 +55,7 @@ def collect_queries(query_input):
 
 def rename_column(processed_dataframe, merge_on):
     processed_dataframe.rename(columns={
-            f"{merge_on}_id": f"{merge_on}_ID",
+            f"{merge_on}_id": f"{merge_on.lower()}_id",
         }, inplace=True)
     return processed_dataframe
     

@@ -15,7 +15,6 @@ def ingestion():
 
 def warehouse(df_dict):
     credentials_warehouse = get_db_credentials("user")
-    #print(credentials_warehouse)
     engine = create_engine_connection(credentials_warehouse, switch=True)
     print(engine)
     insert =run_engine_to_insert_database(engine,df_dict)
@@ -33,5 +32,6 @@ input_data = {
                         }
             }
 
-test=warehouse(create_fact_table(input_data))
+ingestion()
+warehouse(create_fact_table(input_data))
     
