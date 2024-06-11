@@ -2,18 +2,6 @@ from src.utils.connection_utils import get_db_credentials, create_engine_connect
 import pandas as pd
 from sqlalchemy import text
 
-input_data = {
-            "credentials": "user",
-            "database_name": "fast_food",
-            "queries": {
-                        "Manager": ["Manager", "Country", "City"],
-                        "Product": ["Product", "Price", "Cost", "Profit/Unit"],
-                        "Purchase_Type": ["Purchase Type"],
-                        "Payment_Method": ["Payment Method"],
-                        "Fact": ["Order ID", "Date", "Product", "Price","Quantity", "Cost", "Profit/Unit", "City", "Country", "Manager", "Purchase Type", "Payment Method", "Revenue", "Profit"]
-                        }
-            }
-
 def process_query_with_engine(engine, query):
     with engine.connect() as conn:
         result = conn.execute(text(query))
@@ -75,6 +63,10 @@ def gather_tables(query_input):
 
     return tables_to_process
 
+def rename_table_columns(dataframe, table):
+    for col in dataframe[table].columns:
+        dataframe[table].rename(columns={col: col.lower()}, inplace=True)
+
 def create_fact_table(query_input):
     
     dataframe_dict = collect_queries(query_input)
@@ -85,13 +77,13 @@ def create_fact_table(query_input):
     for table in tables_to_process:
         if table != fact_name:
             dataframe_dict[fact_name] = merge_dataframe(dataframe_dict, fact_name, table)
-            
-
-    for table in tables_to_process:
-        if table != fact_name:
             drop_columns = [col for col in dataframe_dict[table].columns if col != f"{table}_id"]
             dataframe_dict[fact_name].drop(columns=drop_columns, axis=1, inplace=True)
 
     dataframe_dict['Fact'].drop(columns='Fact_id', axis=1, inplace=True)
+
+    for table in tables_to_process:
+        rename_table_columns(dataframe_dict, table)
+
 
     return dataframe_dict

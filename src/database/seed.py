@@ -5,7 +5,7 @@ from src.utils.ingestion_utils import (
 )
 from src.utils.processing_utils import create_fact_table
 def ingestion():
-    csv_file_path = "data/processed/fast-food-data-sample.csv"
+    csv_file_path = "data/processed/cleaned-fast-food-data.csv"
 
     credentials = get_db_credentials("user")
     engine = create_engine_connection(credentials)
@@ -28,7 +28,7 @@ input_data = {
                         "Product": ["Product", "Price", "Cost", "Profit/Unit"],
                         "Purchase_Type": ["Purchase Type"],
                         "Payment_Method": ["Payment Method"],
-                        "Fact": ["Order ID", "Date", "Product", "Price","Quantity", "Cost", "Profit/Unit", "City", "Country", "Manager", "Purchase Type", "Payment Method", "Revenue", "Profit"]
+                        "Fact": ["Order_ID", "Date", "Product", "Price", "Quantity", "Cost", "Profit/Unit", "City", "Country", "Manager", "Purchase Type", "Payment Method", "Revenue", "Profit"]
                         }
             }
 

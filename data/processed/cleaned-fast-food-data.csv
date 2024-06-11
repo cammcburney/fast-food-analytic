@@ -1,4 +1,4 @@
-Order ID,Date,Product,Price,Quantity,Cost,Profit/Unit,City,Country,Purchase Type,Payment Method,Manager,Revenue,Profit
+Order_ID,Date,Product,Price,Quantity,Cost,Profit/Unit,City,Country,Purchase Type,Payment Method,Manager,Revenue,Profit
 10455,08/11/2022,Burgers,12.99,570,4.32,8.67,Berlin,Germany,In-store , Credit Card,Walter Muller,7404.3,4941.9
 10460,09/11/2022,Burgers,12.99,555,4.32,8.67,Berlin,Germany,In-store , Credit Card,Walter Muller,7209.45,4811.85
 10465,10/11/2022,Burgers,12.99,555,4.32,8.67,Madrid,Spain,In-store , Credit Card,Pablo Perez,7209.45,4811.85
