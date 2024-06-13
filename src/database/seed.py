@@ -5,12 +5,13 @@ from src.utils.ingestion_utils import (
     insert_data_into_database,
 )
 from src.utils.processing_utils import create_fact_table
+from src.database.processing import create_tables
 
-def ingestion(dict, user):
+def ingestion(users):
     csv_file_path = "data/processed/cleaned-fast-food-data.csv"
 
-    credentials = get_db_credentials("user")
-    engine = create_engine_connection(credentials)
+    credentials = get_db_credentials(users)
+    engine = create_engine_connection(credentials,switch=False)
     sample_dataframe = read_data_file_into_dataframe(csv_file_path)
     insert_data_into_database(engine=engine, dataframe=sample_dataframe, table_name="fast_food")
     engine.dispose()
@@ -31,14 +32,14 @@ input_data = {
             "credentials": "user",
             "database_name": "fast_food",
             "queries": {
-                        "Manager": ["Manager", "Country", "City"],
-                        "Product": ["Product", "Price", "Cost", "Profit/Unit"],
-                        "Purchase_Type": ["Purchase_Type"],
-                        "Payment_Method": ["Payment_Method"],
-                        "Fact": ["Order_ID", "Date", "Product", "Price", "Quantity", "Cost", "Profit/Unit", "City", "Country", "Manager", "Purchase_Type", "Payment_Method", "Revenue", "Profit"]
+                        "manager": ["manager", "country", "city"],
+                        "product": ["product", "price", "cost", "profit_unit"],
+                        "purchase_type": ["purchase_type"],
+                        "payment_method": ["payment_method"],
+                        "fact": ["order_id", "date", "product", "price", "quantity", "cost", "profit_unit", "city", "country", "manager", "purchase_type", "payment_method", "revenue", "profit"]
                         }
             }
 
 tables = create_fact_table(input_data)
-
-ingest_data(tables, "test")
+#create_tables("user")
+warehouse(tables,'user')

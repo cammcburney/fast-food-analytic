@@ -1,9 +1,9 @@
 import pg8000
-from src.utils.connection_utils import get_db_credentials
+from src.utils.connection_utils import get_db_credentials,create_engine_connection
 from src.utils.processing_utils import create_fact_table
 def create_dim_tables():
     create_dim_manager = """
-    CREATE TABLE IF NOT EXISTS Manager (
+    CREATE TABLE IF NOT EXISTS manager (
         "manager_id" SERIAL PRIMARY KEY NOT NULL,
         "manager" VARCHAR(50) NOT NULL,
         "country" VARCHAR(50) NOT NULL,
@@ -12,24 +12,24 @@ def create_dim_tables():
     """
     
     create_dim_product = """
-    CREATE TABLE IF NOT EXISTS Product (
+    CREATE TABLE IF NOT EXISTS product (
         "product_id" SERIAL PRIMARY KEY NOT NULL,
         "product" VARCHAR(100) NOT NULL,
-        "price" FLOAT NOT NULL,
-        "cost" FLOAT NOT NULL,
-        "profit/unit" FLOAT NOT NULL
+        "price" FLOAT,
+        "cost" DECIMAL NOT NULL,
+        "profit_unit" DECIMAL NOT NULL
     );
     """
 
     create_dim_purchase_type = """
-    CREATE TABLE IF NOT EXISTS Purchase_Type (
+    CREATE TABLE IF NOT EXISTS purchase_type (
         "purchase_type_id" SERIAL PRIMARY KEY NOT NULL,
         "purchase_type" VARCHAR(50) NOT NULL
     );
     """
     
     create_dim_payment_method = """
-    CREATE TABLE IF NOT EXISTS Payment_Method (
+    CREATE TABLE IF NOT EXISTS payment_method (
         "payment_method_id" SERIAL PRIMARY KEY NOT NULL,
         "payment_method" VARCHAR(50) NOT NULL
     );
@@ -39,23 +39,23 @@ def create_dim_tables():
 
 def create_fact_warehouse():
     create_table_sql = """
-    CREATE TABLE IF NOT EXISTS Fact (
+    CREATE TABLE IF NOT EXISTS fact (
         "order_id" SERIAL PRIMARY KEY NOT NULL,
-        "date" DATE NOT NULL,
+        "date" VARCHAR,
         "product_id" INT NOT NULL,
-        "price" FLOAT NOT NULL,
+        "price" FLOAT,
         "quantity" INT NOT NULL,
-        "cost" FLOAT NOT NULL,
-        "profit/unit" FLOAT NOT NULL,
+        "cost" FLOAT,
+        "profit_unit" FLOAT,
         "manager_id" INT NOT NULL,
         "purchase_type_id" INT NOT NULL,
         "payment_method_id" INT NOT NULL,
-        "revenue" FLOAT NOT NULL,
-        "profit" FLOAT NOT NULL,
-        FOREIGN KEY ("manager_id") REFERENCES Manager("manager_id"),
-        FOREIGN KEY ("product_id") REFERENCES Product("product_id"),
-        FOREIGN KEY ("purchase_type_id") REFERENCES Purchase_Type("purchase_type_id"),
-        FOREIGN KEY ("payment_method_id") REFERENCES Payment_Method("payment_method_id")
+        "revenue" DECIMAL NOT NULL,
+        "profit" DECIMAL NOT NULL,
+        FOREIGN KEY ("manager_id") REFERENCES manager("manager_id"),
+        FOREIGN KEY ("product_id") REFERENCES product("product_id"),
+        FOREIGN KEY ("purchase_type_id") REFERENCES purchase_type("purchase_type_id"),
+        FOREIGN KEY ("payment_method_id") REFERENCES payment_method("payment_method_id")
     );
     """
     return create_table_sql
@@ -70,7 +70,7 @@ def create_tables(user):
             password=credentials_warehouse["password"],
             host=credentials_warehouse["host"],
             port=int(credentials_warehouse["port"]),
-            database=credentials_warehouse["database"]
+            database=credentials_warehouse["warehouse"]
         )
         
         cursor = connection.cursor()
@@ -97,4 +97,4 @@ def create_tables(user):
 
 
 
-create_tables("test")
+create_tables("user")

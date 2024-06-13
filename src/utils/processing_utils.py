@@ -70,7 +70,7 @@ def rename_table_columns(dataframe, table):
 def create_fact_table(query_input):
     
     dataframe_dict = collect_queries(query_input)
-    fact_name = "Fact"
+    fact_name = "fact"
 
     tables_to_process = gather_tables(query_input)
 
@@ -80,11 +80,11 @@ def create_fact_table(query_input):
             drop_columns = [col for col in dataframe_dict[table].columns if col != f"{table}_id"]
             dataframe_dict[fact_name].drop(columns=drop_columns, axis=1, inplace=True)
 
-    dataframe_dict['Fact'].drop(columns='Fact_id', axis=1, inplace=True)
-    dataframe_dict['Product'].drop(columns='Product_id', axis=1, inplace=True)
-    dataframe_dict['Manager'].drop(columns='Manager_id', axis=1, inplace=True)
-    dataframe_dict['Purchase_Type'].drop(columns='Purchase_Type_id', axis=1, inplace=True)
-    dataframe_dict['Payment_Method'].drop(columns='Payment_Method_id', axis=1, inplace=True)
+    dataframe_dict['fact'].drop(columns='fact_id', axis=1, inplace=True)
+    dataframe_dict['product'].drop(columns='product_id', axis=1, inplace=True)
+    dataframe_dict['manager'].drop(columns='manager_id', axis=1, inplace=True)
+    dataframe_dict['purchase_type'].drop(columns='purchase_type_id', axis=1, inplace=True)
+    dataframe_dict['payment_method'].drop(columns='payment_method_id', axis=1, inplace=True)
 
     for table in tables_to_process:
         rename_table_columns(dataframe_dict, table)
