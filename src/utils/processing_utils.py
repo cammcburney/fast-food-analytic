@@ -81,6 +81,10 @@ def create_fact_table(query_input):
             dataframe_dict[fact_name].drop(columns=drop_columns, axis=1, inplace=True)
 
     dataframe_dict['Fact'].drop(columns='Fact_id', axis=1, inplace=True)
+    dataframe_dict['Product'].drop(columns='Product_id', axis=1, inplace=True)
+    dataframe_dict['Manager'].drop(columns='Manager_id', axis=1, inplace=True)
+    dataframe_dict['Purchase_Type'].drop(columns='Purchase_Type_id', axis=1, inplace=True)
+    dataframe_dict['Payment_Method'].drop(columns='Payment_Method_id', axis=1, inplace=True)
 
     for table in tables_to_process:
         rename_table_columns(dataframe_dict, table)

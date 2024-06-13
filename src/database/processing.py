@@ -1,36 +1,37 @@
 import pg8000
 from src.utils.connection_utils import get_db_credentials
+from src.utils.processing_utils import create_fact_table
 def create_dim_tables():
     create_dim_manager = """
-    CREATE TABLE IF NOT EXISTS Dim_Manager (
-        "Manager_ID" INT PRIMARY KEY,
-        "Manager" VARCHAR(50),
-        "Country" VARCHAR(50),
-        "City" VARCHAR(50)
+    CREATE TABLE IF NOT EXISTS Manager (
+        "manager_id" SERIAL PRIMARY KEY NOT NULL,
+        "manager" VARCHAR(50) NOT NULL,
+        "country" VARCHAR(50) NOT NULL,
+        "city" VARCHAR(50) NOT NULL
     );
     """
     
     create_dim_product = """
-    CREATE TABLE IF NOT EXISTS Dim_Product (
-        "Product_ID" INT PRIMARY KEY,
-        "Product" VARCHAR(100),
-        "Price" FLOAT,
-        "Cost" FLOAT,
-        "Profit/Unit" FLOAT
+    CREATE TABLE IF NOT EXISTS Product (
+        "product_id" SERIAL PRIMARY KEY NOT NULL,
+        "product" VARCHAR(100) NOT NULL,
+        "price" FLOAT NOT NULL,
+        "cost" FLOAT NOT NULL,
+        "profit/unit" FLOAT NOT NULL
     );
     """
 
     create_dim_purchase_type = """
-    CREATE TABLE IF NOT EXISTS Dim_Purchase_Type (
-        "Purchase_Type_ID" INT PRIMARY KEY,
-        "Purchase_Type" VARCHAR(50)
+    CREATE TABLE IF NOT EXISTS Purchase_Type (
+        "purchase_type_id" SERIAL PRIMARY KEY NOT NULL,
+        "purchase_type" VARCHAR(50) NOT NULL
     );
     """
     
     create_dim_payment_method = """
-    CREATE TABLE IF NOT EXISTS Dim_Payment_Method (
-        "Payment_Method_ID" INT PRIMARY KEY,
-        "Payment_Method" VARCHAR(50)
+    CREATE TABLE IF NOT EXISTS Payment_Method (
+        "payment_method_id" SERIAL PRIMARY KEY NOT NULL,
+        "payment_method" VARCHAR(50) NOT NULL
     );
     """
     
@@ -38,30 +39,30 @@ def create_dim_tables():
 
 def create_fact_warehouse():
     create_table_sql = """
-    CREATE TABLE IF NOT EXISTS fact_sales (
-        "Order_ID" INT PRIMARY KEY,
-        "Date" DATE,
-        "Product_ID" INT,
-        "Price" FLOAT,
-        "Quantity" INT,
-        "Cost" FLOAT,
-        "Profit/Unit" FLOAT,
-        "Manager_ID" INT,
-        "Purchase_Type_ID" INT,
-        "Payment_Method_ID" INT,
-        "Revenue" FLOAT,
-        "Profit" FLOAT,
-        FOREIGN KEY ("Manager_ID") REFERENCES Dim_Manager("Manager_ID"),
-        FOREIGN KEY ("Product_ID") REFERENCES Dim_Product("Product_ID"),
-        FOREIGN KEY ("Purchase_Type_ID") REFERENCES Dim_Purchase_Type("Purchase_Type_ID"),
-        FOREIGN KEY ("Payment_Method_ID") REFERENCES Dim_Payment_Method("Payment_Method_ID")
+    CREATE TABLE IF NOT EXISTS Fact (
+        "order_id" SERIAL PRIMARY KEY NOT NULL,
+        "date" DATE NOT NULL,
+        "product_id" INT NOT NULL,
+        "price" FLOAT NOT NULL,
+        "quantity" INT NOT NULL,
+        "cost" FLOAT NOT NULL,
+        "profit/unit" FLOAT NOT NULL,
+        "manager_id" INT NOT NULL,
+        "purchase_type_id" INT NOT NULL,
+        "payment_method_id" INT NOT NULL,
+        "revenue" FLOAT NOT NULL,
+        "profit" FLOAT NOT NULL,
+        FOREIGN KEY ("manager_id") REFERENCES Manager("manager_id"),
+        FOREIGN KEY ("product_id") REFERENCES Product("product_id"),
+        FOREIGN KEY ("purchase_type_id") REFERENCES Purchase_Type("purchase_type_id"),
+        FOREIGN KEY ("payment_method_id") REFERENCES Payment_Method("payment_method_id")
     );
     """
     return create_table_sql
 
 
-def create_tables():
-    credentials_warehouse = get_db_credentials("user")
+def create_tables(user):
+    credentials_warehouse = get_db_credentials(user)
 
     try:
         connection = pg8000.connect(
@@ -95,4 +96,5 @@ def create_tables():
             connection.close()
 
 
-create_tables()
+
+create_tables("test")
