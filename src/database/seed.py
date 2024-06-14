@@ -32,10 +32,11 @@ input_data = {
                         "fact": ["order_id", "date", "product", "price", "quantity", "cost", "profit_unit", "city", "country", "manager", "purchase_type", "payment_method", "revenue", "profit"]
                         }
             }
-tables = create_fact_table(input_data)
 
 seed_oltp("user")
 seed_oltp("test")
+
+tables = create_fact_table(input_data)
 
 seed_olap_warehouse(tables, "user")
 seed_olap_warehouse(tables, "test")
