@@ -12,7 +12,7 @@ from src.utils.ingestion_utils import (
 class Test_Read_Data_File_Into_Dataframe:
 
     def test_returns_type_dataframe(self):
-        csv_file_path = "data/processed/fast-food-data-sample.csv"
+        csv_file_path = "data/processed/cleaned-fast-food-data.csv"
         dataframe = read_data_file_into_dataframe(csv_file_path)
 
         assert type(dataframe) == pd.DataFrame

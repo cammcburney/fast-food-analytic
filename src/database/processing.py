@@ -1,36 +1,37 @@
 import pg8000
-from src.utils.connection_utils import get_db_credentials
+from src.utils.connection_utils import get_db_credentials,create_engine_connection
+from src.utils.processing_utils import create_fact_table
 def create_dim_tables():
     create_dim_manager = """
-    CREATE TABLE IF NOT EXISTS Dim_Manager (
-        "Manager_ID" INT PRIMARY KEY,
-        "Manager" VARCHAR(50),
-        "Country" VARCHAR(50),
-        "City" VARCHAR(50)
+    CREATE TABLE IF NOT EXISTS manager (
+        "manager_id" SERIAL PRIMARY KEY NOT NULL,
+        "manager" VARCHAR(50) NOT NULL,
+        "country" VARCHAR(50) NOT NULL,
+        "city" VARCHAR(50) NOT NULL
     );
     """
     
     create_dim_product = """
-    CREATE TABLE IF NOT EXISTS Dim_Product (
-        "Product_ID" INT PRIMARY KEY,
-        "Product" VARCHAR(100),
-        "Price" FLOAT,
-        "Cost" FLOAT,
-        "Profit/Unit" FLOAT
+    CREATE TABLE IF NOT EXISTS product (
+        "product_id" SERIAL PRIMARY KEY NOT NULL,
+        "product" VARCHAR(100) NOT NULL,
+        "price" FLOAT,
+        "cost" DECIMAL NOT NULL,
+        "profit_unit" DECIMAL NOT NULL
     );
     """
 
     create_dim_purchase_type = """
-    CREATE TABLE IF NOT EXISTS Dim_Purchase_Type (
-        "Purchase_Type_ID" INT PRIMARY KEY,
-        "Purchase_Type" VARCHAR(50)
+    CREATE TABLE IF NOT EXISTS purchase_type (
+        "purchase_type_id" SERIAL PRIMARY KEY NOT NULL,
+        "purchase_type" VARCHAR(50) NOT NULL
     );
     """
     
     create_dim_payment_method = """
-    CREATE TABLE IF NOT EXISTS Dim_Payment_Method (
-        "Payment_Method_ID" INT PRIMARY KEY,
-        "Payment_Method" VARCHAR(50)
+    CREATE TABLE IF NOT EXISTS payment_method (
+        "payment_method_id" SERIAL PRIMARY KEY NOT NULL,
+        "payment_method" VARCHAR(50) NOT NULL
     );
     """
     
@@ -38,38 +39,35 @@ def create_dim_tables():
 
 def create_fact_warehouse():
     create_table_sql = """
-    CREATE TABLE IF NOT EXISTS fact_sales (
-        "Order_ID" INT PRIMARY KEY,
-        "Date" DATE,
-        "Product_ID" INT,
-        "Price" FLOAT,
-        "Quantity" INT,
-        "Cost" FLOAT,
-        "Profit/Unit" FLOAT,
-        "Manager_ID" INT,
-        "Purchase_Type_ID" INT,
-        "Payment_Method_ID" INT,
-        "Revenue" FLOAT,
-        "Profit" FLOAT,
-        FOREIGN KEY ("Manager_ID") REFERENCES Dim_Manager("Manager_ID"),
-        FOREIGN KEY ("Product_ID") REFERENCES Dim_Product("Product_ID"),
-        FOREIGN KEY ("Purchase_Type_ID") REFERENCES Dim_Purchase_Type("Purchase_Type_ID"),
-        FOREIGN KEY ("Payment_Method_ID") REFERENCES Dim_Payment_Method("Payment_Method_ID")
+    CREATE TABLE IF NOT EXISTS fact (
+        "order_id" SERIAL PRIMARY KEY NOT NULL,
+        "date" VARCHAR,
+        "product_id" INT NOT NULL,
+        "quantity" INT NOT NULL,
+        "manager_id" INT NOT NULL,
+        "purchase_type_id" INT NOT NULL,
+        "payment_method_id" INT NOT NULL,
+        "revenue" DECIMAL NOT NULL,
+        "profit" DECIMAL NOT NULL,
+        FOREIGN KEY ("manager_id") REFERENCES manager("manager_id"),
+        FOREIGN KEY ("product_id") REFERENCES product("product_id"),
+        FOREIGN KEY ("purchase_type_id") REFERENCES purchase_type("purchase_type_id"),
+        FOREIGN KEY ("payment_method_id") REFERENCES payment_method("payment_method_id")
     );
     """
     return create_table_sql
 
 
-def create_tables():
-    credentials_warehouse = get_db_credentials("user")
-
+def create_tables(user):
+    credentials = get_db_credentials(user)
+    
     try:
         connection = pg8000.connect(
-            user=credentials_warehouse["user"],
-            password=credentials_warehouse["password"],
-            host=credentials_warehouse["host"],
-            port=int(credentials_warehouse["port"]),
-            database=credentials_warehouse["database"]
+            user=credentials["user"],
+            password=credentials["password"],
+            host=credentials["host"],
+            port=int(credentials["port"]),
+            database=credentials["warehouse"]
         )
         
         cursor = connection.cursor()
@@ -95,4 +93,52 @@ def create_tables():
             connection.close()
 
 
-create_tables()
+def create_oltp_table(user):
+    credentials = get_db_credentials(user)
+    
+    try:
+        connection = pg8000.connect(
+            user=credentials["user"],
+            password=credentials["password"],
+            host=credentials["host"],
+            port=int(credentials["port"]),
+            database=credentials["database"]
+        )
+        
+        cursor = connection.cursor()
+        sql = """
+            CREATE TABLE fast_food (
+            order_id SERIAL PRIMARY KEY,
+            date DATE,
+            product VARCHAR(100),
+            price DECIMAL(10,2),
+            quantity INT,
+            cost DECIMAL(10,2),
+            profit_unit DECIMAL(10,2),
+            city VARCHAR(100),
+            country VARCHAR(100),
+            purchase_type VARCHAR(50),
+            payment_method VARCHAR(50),
+            manager VARCHAR(100),
+            revenue DECIMAL(10,2),
+            profit DECIMAL(10,2)
+            );
+
+            """
+        cursor.execute(sql)
+
+        connection.commit()
+        
+        print("All tables created successfully.")
+    
+    except Exception as e:
+        print("An error occurred while creating the tables:", e)
+    
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()
+
+create_tables("user")
+create_tables("test")

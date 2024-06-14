@@ -36,9 +36,7 @@ def insert_data_into_database(dataframe, engine, table_name):
             dataframe of given file
     """
     try:
-        response = dataframe.to_sql(
-            table_name, engine, if_exists="replace", index=False
-        )
+        response = dataframe.to_sql(table_name, engine, if_exists="replace", index=False)
 
         return response
     except Exception:

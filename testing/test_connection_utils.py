@@ -67,6 +67,7 @@ class TestGetDBConnection:
             "db_host": "test_host",
             "db_port": "test_port",
             "test_db_name": "test_database",
+            "test_wh_name": "test_warehouse"
         }[x],
     )
     def test_get_user_credentials_test_path(self, mock_getenv):
@@ -76,6 +77,7 @@ class TestGetDBConnection:
             "host": "test_host",
             "port": "test_port",
             "database": "test_database",
+            "warehouse": "test_warehouse"
         }
 
         actual_credentials = get_db_credentials("test")

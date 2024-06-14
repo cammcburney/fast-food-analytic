@@ -36,6 +36,7 @@ def get_db_credentials(which_credentials):
             connection_credentials["warehouse"] = os.getenv("db_wname")
         elif which_credentials == "test":
             connection_credentials["database"] = os.getenv("test_db_name")
+            connection_credentials["warehouse"] = os.getenv("test_wh_name")
 
         return connection_credentials
 
@@ -79,10 +80,3 @@ def create_engine_connection(connection_credentials, switch=False):
             "Error occured when connecting to the database, please check credentials."
         )
 
-
-def run_engine_to_insert_database(engine, input_dict):
-    with engine.begin() as connection:
-            for dataframe_name, dataframe in input_dict.items():
-                dataframe.to_sql(name=dataframe_name.lower(), con=connection, if_exists='replace', index=False)
-                success_message = "Succesfully moved dataframe rows to SQL database"
-            return success_message
