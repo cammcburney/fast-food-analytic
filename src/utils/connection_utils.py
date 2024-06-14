@@ -36,6 +36,7 @@ def get_db_credentials(which_credentials):
             connection_credentials["warehouse"] = os.getenv("db_wname")
         elif which_credentials == "test":
             connection_credentials["database"] = os.getenv("test_db_name")
+            connection_credentials["warehouse"] = os.getenv("test_wh_name")
 
         return connection_credentials
 

@@ -17,7 +17,7 @@ def query_function(credentials="user",
     columns_str = ", ".join([f'"{column}"' for column in select_columns])
     creds = get_db_credentials(f"{credentials}")
     query = f'SELECT DISTINCT {columns_str} FROM {database_name};'
-    engine = create_engine_connection(creds, switch=False)
+    engine = create_engine_connection(creds, switch=False)\
 
     result, rows = process_query_with_engine(engine, query)
 
@@ -91,3 +91,38 @@ def create_fact_table(query_input):
 
 
     return dataframe_dict
+
+
+# input_data = {
+#             "credentials": "user",
+#             "database_name": "fast_food",
+#             "queries": {
+#                         "manager": ["manager", "country", "city"],
+#                         "product": ["product", "price", "cost", "profit_unit"],
+#                         "purchase_type": ["purchase_type"],
+#                         "payment_method": ["payment_method"],
+#                         "fact": ["order_id", "date", "product", "price", "quantity", "cost", "profit_unit", "city", "country", "manager", "purchase_type", "payment_method", "revenue", "profit"]
+#                         }
+#             }
+
+
+# df_dict = create_fact_table(input_data)
+# print(type(df_dict["product"]))
+
+# import pandas as pd
+# for key, df in df_dict.items():
+#     if isinstance(df, pd.DataFrame):
+#         print(f"DataFrame '{key}' is valid")
+
+#         print("Column types:")
+#         print(df.dtypes)
+        
+#         print("First value type in each column:")
+#         for column in df.columns:
+#             if not df[column].empty:
+#                 first_value = df[column].iloc[0]
+#                 print(f"Column '{column}': {type(first_value)}")
+#             else:
+#                 print(f"Column '{column}' is empty")
+#     else:
+#         print(f"'{key}' is not a DataFrame")

@@ -1,5 +1,4 @@
 def run_engine_to_insert_database(engine, input_dict):
-    print(input_dict)
     with engine.begin() as connection:
             for dataframe_name, dataframe in input_dict.items():
                 print(dataframe)

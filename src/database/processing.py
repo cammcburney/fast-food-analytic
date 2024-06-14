@@ -43,10 +43,7 @@ def create_fact_warehouse():
         "order_id" SERIAL PRIMARY KEY NOT NULL,
         "date" VARCHAR,
         "product_id" INT NOT NULL,
-        "price" FLOAT,
         "quantity" INT NOT NULL,
-        "cost" FLOAT,
-        "profit_unit" FLOAT,
         "manager_id" INT NOT NULL,
         "purchase_type_id" INT NOT NULL,
         "payment_method_id" INT NOT NULL,
@@ -62,15 +59,15 @@ def create_fact_warehouse():
 
 
 def create_tables(user):
-    credentials_warehouse = get_db_credentials(user)
-
+    credentials = get_db_credentials(user)
+    
     try:
         connection = pg8000.connect(
-            user=credentials_warehouse["user"],
-            password=credentials_warehouse["password"],
-            host=credentials_warehouse["host"],
-            port=int(credentials_warehouse["port"]),
-            database=credentials_warehouse["warehouse"]
+            user=credentials["user"],
+            password=credentials["password"],
+            host=credentials["host"],
+            port=int(credentials["port"]),
+            database=credentials["warehouse"]
         )
         
         cursor = connection.cursor()
@@ -96,5 +93,52 @@ def create_tables(user):
             connection.close()
 
 
+def create_oltp_table(user):
+    credentials = get_db_credentials(user)
+    
+    try:
+        connection = pg8000.connect(
+            user=credentials["user"],
+            password=credentials["password"],
+            host=credentials["host"],
+            port=int(credentials["port"]),
+            database=credentials["database"]
+        )
+        
+        cursor = connection.cursor()
+        sql = """
+            CREATE TABLE fast_food (
+            order_id SERIAL PRIMARY KEY,
+            date DATE,
+            product VARCHAR(100),
+            price DECIMAL(10,2),
+            quantity INT,
+            cost DECIMAL(10,2),
+            profit_unit DECIMAL(10,2),
+            city VARCHAR(100),
+            country VARCHAR(100),
+            purchase_type VARCHAR(50),
+            payment_method VARCHAR(50),
+            manager VARCHAR(100),
+            revenue DECIMAL(10,2),
+            profit DECIMAL(10,2)
+            );
+
+            """
+        cursor.execute(sql)
+
+        connection.commit()
+        
+        print("All tables created successfully.")
+    
+    except Exception as e:
+        print("An error occurred while creating the tables:", e)
+    
+    finally:
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()
 
 create_tables("user")
+create_tables("test")

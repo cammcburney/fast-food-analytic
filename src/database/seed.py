@@ -5,28 +5,21 @@ from src.utils.ingestion_utils import (
     insert_data_into_database,
 )
 from src.utils.processing_utils import create_fact_table
-from src.database.processing import create_tables
 
-def ingestion(users):
+def seed_oltp(users, switch=False):
     csv_file_path = "data/processed/cleaned-fast-food-data.csv"
 
     credentials = get_db_credentials(users)
-    engine = create_engine_connection(credentials,switch=False)
+    engine = create_engine_connection(credentials,switch=switch)
     sample_dataframe = read_data_file_into_dataframe(csv_file_path)
     insert_data_into_database(engine=engine, dataframe=sample_dataframe, table_name="fast_food")
     engine.dispose()
 
-def ingest_data(df_dict, user):
-    credentials_warehouse = get_db_credentials(user)
-    engine = create_engine_connection(credentials_warehouse, switch=False)
-    run_engine_to_insert_database(engine,df_dict)
-
-def warehouse(df_dict, user):
+def seed_olap_warehouse(df_dict, user):
     credentials_warehouse = get_db_credentials(user)
     engine = create_engine_connection(credentials_warehouse, switch=True)
-    print(engine)
-    insert =run_engine_to_insert_database(engine,df_dict)
-    print(insert)
+    run_engine_to_insert_database(engine,df_dict)
+    engine.dispose()
 
 input_data = {
             "credentials": "user",
@@ -39,7 +32,11 @@ input_data = {
                         "fact": ["order_id", "date", "product", "price", "quantity", "cost", "profit_unit", "city", "country", "manager", "purchase_type", "payment_method", "revenue", "profit"]
                         }
             }
-
 tables = create_fact_table(input_data)
-#create_tables("user")
-warehouse(tables,'user')
+
+seed_oltp("user")
+seed_oltp("test")
+
+seed_olap_warehouse(tables, "user")
+seed_olap_warehouse(tables, "test")
+
