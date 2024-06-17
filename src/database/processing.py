@@ -1,6 +1,7 @@
 import pg8000
-from src.utils.connection_utils import get_db_credentials,create_engine_connection
-from src.utils.processing_utils import create_fact_table
+from src.utils.connection_utils import get_db_credentials
+import timeit
+from functools import partial
 def create_dim_tables():
     create_dim_manager = """
     CREATE TABLE IF NOT EXISTS manager (
@@ -140,5 +141,14 @@ def create_oltp_table(user):
         if connection:
             connection.close()
 
-create_tables("user")
-create_tables("test")
+
+user_create_tables = partial(create_tables, "user")
+test_create_tables = partial(create_tables, "test")
+
+
+time_user_table_creation = timeit.timeit(user_create_tables, number=1)
+print(f"User tables created in: {time_user_table_creation} seconds")
+
+
+time_test_table_creation = timeit.timeit(test_create_tables, number=1)
+print(f"Test tables created in: {time_test_table_creation} seconds")

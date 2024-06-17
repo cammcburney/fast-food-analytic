@@ -67,7 +67,7 @@ def rename_table_columns(dataframe, table):
     for col in dataframe[table].columns:
         dataframe[table].rename(columns={col: col.lower()}, inplace=True)
 
-def create_fact_table(query_input):
+def create_star_schema_dict(query_input):
     
     dataframe_dict = collect_queries(query_input)
     fact_name = "fact"
