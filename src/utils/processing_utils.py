@@ -1,94 +1,112 @@
 from src.utils.connection_utils import get_db_credentials, create_engine_connection
 import pandas as pd
+from pandas.errors import MergeError
 from sqlalchemy import text
+from src.utils.custom_errors import QueryExecutionError
+from sqlalchemy.exc import SQLAlchemyError, DBAPIError, ProgrammingError
 
 def process_query_with_engine(engine, query):
-    with engine.connect() as conn:
-        result = conn.execute(text(query))
-        rows = result.fetchall()
-    return result, rows
+    try:
+        with engine.connect() as conn:
+            result = conn.execute(text(query))
+            rows = result.fetchall()
+        return result, rows
+    except SQLAlchemyError:
+        raise QueryExecutionError("Failed to to run query, check parameters and connection are valid")
+
 
 def query_function(credentials="user",
                    database_name=None, 
                    select_columns=None,
                    id_column=None
                    ):
+    try:
+        if database_name is None or select_columns is None or id_column is None:
+            raise ValueError("database name, columns, and id cannot be None.")
 
-    columns_str = ", ".join([f'"{column}"' for column in select_columns])
-    creds = get_db_credentials(f"{credentials}")
-    query = f'SELECT DISTINCT {columns_str} FROM {database_name};'
-    engine = create_engine_connection(creds, switch=False)\
+        columns_str = ", ".join([f'"{column}"' for column in select_columns])
+        creds = get_db_credentials(f"{credentials}")
+        query = f'SELECT DISTINCT {columns_str} FROM {database_name};'
+        engine = create_engine_connection(creds, switch=False)
 
-    result, rows = process_query_with_engine(engine, query)
+        result, rows = process_query_with_engine(engine, query)
 
-    dataframe = pd.DataFrame(rows, columns=result.keys())
+        dataframe = pd.DataFrame(rows, columns=result.keys())
+        
+        dataframe.insert(0, f"{id_column}_id", range(1, 1 + len(dataframe)))
+        
+        return dataframe
     
-    dataframe.insert(0, f"{id_column}_id", range(1, 1 + len(dataframe)))
+    except (SQLAlchemyError, DBAPIError, ProgrammingError):
+        raise QueryExecutionError("Failed to to run query, check parameters and connection are valid")
+    except ValueError:
+        raise ValueError("Incorrect values given, please check inputs.")
     
-    return dataframe
-
 def collect_queries(query_input):
+    try:
+        credentials = query_input["credentials"]
+        database_name = query_input["database_name"]
+        queries = query_input["queries"]
+        
+        dataframe_dict = {}
 
-    credentials = query_input["credentials"]
-    database_name = query_input["database_name"]
-    queries = query_input["queries"]
-    
-    dataframe_dict = {}
+        for id_name, query_list in queries.items():
+            dataframe = query_function(credentials, database_name, query_list, id_name)
+            dataframe_dict[id_name] = dataframe
 
-    for id_name, query_list in queries.items():
-        dataframe = query_function(credentials, database_name, query_list, id_name)
-        dataframe_dict[id_name] = dataframe
-
-    return dataframe_dict
-
-def rename_column(processed_dataframe, merge_on):
-    processed_dataframe.rename(columns={
-            f"{merge_on}_id": f"{merge_on.lower()}_id",
-        }, inplace=True)
-    return processed_dataframe
+        return dataframe_dict
+    except (SQLAlchemyError, DBAPIError, ProgrammingError):
+        raise QueryExecutionError("Failed to to run query, check parameters and connection are valid")
+    except KeyError:
+        raise KeyError("Incorrect values given, please check inputs.")
     
 def merge_dataframe(dataframe_dict, to_merge, merge_on, how="left"):
-    processed_df = dataframe_dict[to_merge]
-    on = list(dataframe_dict[merge_on].columns[1:])
-    suffixes = tuple(f"'', '_{merge_on}'")
-    processed_df = processed_df.merge(dataframe_dict[merge_on], on=on, how=how, suffixes=suffixes)
+    valid_how_values = {"left", "right", "outer", "inner", "cross"}
+    
+    if how not in valid_how_values:
+        raise ValueError("Incorrect values given, please check inputs.")
+    
+    try:
+        processed_df = dataframe_dict[to_merge]
+        on = list(dataframe_dict[merge_on].columns[1:])
+        suffixes = tuple(f"'', '_{merge_on}'")
+        processed_df = processed_df.merge(dataframe_dict[merge_on], on=on, how=how, suffixes=suffixes)
 
-    output_df = rename_column(processed_df, merge_on)
-    return output_df
+        return processed_df
+    except (KeyError, ValueError, MergeError, TypeError):
+        raise Exception("Incorrect values given, please check inputs.")
 
 def gather_tables(query_input):
-    tables_to_process = []
-    for key, _ in query_input["queries"].items():
-        tables_to_process.append(key)
+    try:
+        tables_to_process = []
+        for key, _ in query_input["queries"].items():
+            tables_to_process.append(key)
 
-    return tables_to_process
-
-def rename_table_columns(dataframe, table):
-    for col in dataframe[table].columns:
-        dataframe[table].rename(columns={col: col.lower()}, inplace=True)
+        return tables_to_process
+    except (KeyError):
+        raise KeyError("Table names not found, check input")
 
 def create_star_schema_dict(query_input):
-    
-    dataframe_dict = collect_queries(query_input)
-    fact_name = "fact"
+    try:
+        dataframe_dict = collect_queries(query_input)
+        fact_name = "fact"
 
-    tables_to_process = gather_tables(query_input)
+        tables_to_process = gather_tables(query_input)
+        print(dataframe_dict["fact"])
+        for table in tables_to_process:
+            if table != fact_name:
+                dataframe_dict[fact_name] = merge_dataframe(dataframe_dict, fact_name, table)
+                drop_columns = [col for col in dataframe_dict[table].columns if col != f"{table}_id"]
+                dataframe_dict[fact_name].drop(columns=drop_columns, axis=1, inplace=True)
+        print(dataframe_dict["fact"])
+        dataframe_dict['fact'].drop(columns='fact_id', axis=1, inplace=True)
+        dataframe_dict['product'].drop(columns='product_id', axis=1, inplace=True)
+        dataframe_dict['manager'].drop(columns='manager_id', axis=1, inplace=True)
+        dataframe_dict['purchase_type'].drop(columns='purchase_type_id', axis=1, inplace=True)
+        dataframe_dict['payment_method'].drop(columns='payment_method_id', axis=1, inplace=True)
 
-    for table in tables_to_process:
-        if table != fact_name:
-            dataframe_dict[fact_name] = merge_dataframe(dataframe_dict, fact_name, table)
-            drop_columns = [col for col in dataframe_dict[table].columns if col != f"{table}_id"]
-            dataframe_dict[fact_name].drop(columns=drop_columns, axis=1, inplace=True)
-
-    dataframe_dict['fact'].drop(columns='fact_id', axis=1, inplace=True)
-    dataframe_dict['product'].drop(columns='product_id', axis=1, inplace=True)
-    dataframe_dict['manager'].drop(columns='manager_id', axis=1, inplace=True)
-    dataframe_dict['purchase_type'].drop(columns='purchase_type_id', axis=1, inplace=True)
-    dataframe_dict['payment_method'].drop(columns='payment_method_id', axis=1, inplace=True)
-
-    for table in tables_to_process:
-        rename_table_columns(dataframe_dict, table)
-
-
-    return dataframe_dict
-
+        return dataframe_dict
+    except (SQLAlchemyError, DBAPIError, ProgrammingError):
+        raise QueryExecutionError("Failed to to run query, check parameters and connection are valid")
+    except (KeyError, ValueError):
+        raise KeyError("Incorrect values given, please check inputs.")

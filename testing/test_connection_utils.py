@@ -107,17 +107,12 @@ class Test_Create_Engine_Connection:
         engine = create_engine_connection(mock_credentials, switch=True)
         assert isinstance(engine, Engine)
 
-    @patch(
-        "src.utils.connection_utils.create_engine_connection",
-        side_effect=ConnectionError(
-            "Error occured when connecting to the database, please check credentials."
-        ),
-    )
+    @patch("src.utils.connection_utils.create_engine_connection", side_effect=ConnectionError(
+            "Error occured when connecting to the database, please check credentials."))
     def test_exception_raised(self, mock_create_engine_connection):
         with pytest.raises(
             ConnectionError,
-            match="Error occured when connecting to the database, please check credentials.",
-        ):
+            match="Error occured when connecting to the database, please check credentials.",):
             mock_create_engine_connection(mock_credentials)
 
     def test_raise_exception_bad_credentials(self):
