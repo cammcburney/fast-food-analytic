@@ -37,6 +37,7 @@ endef
 requirements: create-environment
 	$(call execute_in_env, $(PIP) install -r ./requirements.txt)
 	chmod +x create-db.sh
+	psql -f src/database/wipe/wipe_databases.sql
 	./create-db.sh
 	python src/database/processing.py
 	python src/database/seed.py

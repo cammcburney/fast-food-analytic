@@ -4,7 +4,8 @@ from src.utils.ingestion_utils import (
     read_data_file_into_dataframe,
     insert_data_into_database,
 )
-from src.utils.processing_utils import create_fact_table
+from src.utils.processing_utils import create_star_schema_dict
+from datetime import datetime
 
 def seed_oltp(users, switch=False):
     csv_file_path = "data/processed/cleaned-fast-food-data.csv"
@@ -33,11 +34,15 @@ input_data = {
                         }
             }
 
+dt1 = datetime.now()
 seed_oltp("user")
 seed_oltp("test")
 
-tables = create_fact_table(input_data)
+tables = create_star_schema_dict(input_data)
 
 seed_olap_warehouse(tables, "user")
 seed_olap_warehouse(tables, "test")
+dt2 = datetime.now()
+
+print(f"Tasks completed in {dt2 - dt1} seconds.")
 

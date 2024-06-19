@@ -1,0 +1,2 @@
+class QueryExecutionError(Exception):
+    pass
