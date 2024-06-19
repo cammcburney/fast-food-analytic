@@ -71,7 +71,7 @@ make run-checks
  
 ## Star-Schema
 
-![Alt text](images\project-pipeline.png)
+![Alt text](images\project_pipeline.png)
 
 ⦁	With our database structured in a star schema, querying is significantly more efficient, which in turn reduces performance costs.
 
@@ -141,7 +141,7 @@ where
 
 ![Alt text](src\queries\visualised_queries\revenue_and_profit_by_country.png)
 
-## Profit Margin by Product Analysis
+## Profit Margin by Product
 
 ```
 SELECT
