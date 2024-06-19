@@ -8,7 +8,9 @@
 
  ## Project Overview
 
-![Local Image](images\project_pipeline.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="images\project_pipeline.png" alt="Project Pipeline Image">
+</p>
 
  This project involves transforming OLTP data into an OLAP format to optimise it for querying. Excel was used to clean data before inserting the rows into a PSQL database, the data was then extracted and transformed and uploaded to another PSQL database optimised for OLAP. The data was queried and visualised with both Excel and Tableau at the end of the process to provide insights and analysis of the contents.
 
@@ -73,7 +75,9 @@ make run-checks
 
 ## Star-Schema
 
-![Local Image](images\star_schema.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="images/star_schema.png" alt="Project Pipeline Image">
+</p>
 
 ⦁	With our database structured in a star schema, querying is significantly more efficient, which in turn reduces performance costs.
 
@@ -83,19 +87,25 @@ make run-checks
 
 ## Interactive Dashboards
 
-![Local Image](images\europe_sales_dashboard.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="images/europe_sales_dashboard.png" alt="Project Pipeline Image">
+</p>
 
-![Local Image](images\europe_sales_dashboard_filtered.png)
- 
+</p>
+ <p align="left"><img style="margin: auto;" src="images/europe_sales_dashboard_filtered.png" alt="Project Pipeline Image">
+</p> 
 
 ⦁	Both of our Dashboards are live and interactive, by clicking on Product, Week or Country, it will dynamically change all the data to represent a chosen a filter and similarly, you can do the same on the second Dashboard.
 
 ⦁	Our designs are created with simplicity in mind, it is very clear and easy to retrieve valuable data and insights, while both can be easily modified and adjusted to add further requested features.
 
-![Local Image](images\sales_transacation_types.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="images/sales_transacation_types.png" alt="Project Pipeline Image">
+</p>
 
-![Local Image](images\sales_transacation_types_filtered.png)
-
+</p>
+ <p align="left"><img style="margin: auto;" src="images/sales_transacation_types_filtered.png" alt="Project Pipeline Image">
+</p>
  
 ⦁	As demonstrated in the image above, selecting a product automatically updates all our data to reflect the chosen filter.
 
@@ -141,7 +151,9 @@ where
     Quantity_Rank = 1
 ```
 
-![Local Image](src\queries\visualised_queries\revenue_and_profit_by_country.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="src/queries/visualised_queries/revenue_and_profit_by_country.png" alt="Project Pipeline Image">
+</p>
 
 ## Profit Margin by Product
 
@@ -159,4 +171,6 @@ ORDER BY
     profit_margin_percentage DESC 
 ```
 
-![Local Image](src\queries\visualised_queries\profit_margin_by_product.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="src/queries/visualised_queries/profit_margin_by_product.png" alt="Project Pipeline Image">
+</p>
