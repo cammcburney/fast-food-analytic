@@ -8,7 +8,9 @@
 
  ## Project Overview
 
-![Alt text](images\project_pipeline.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="images/project_pipeline.png" alt="Shows an image of the data pipeline, follows the format as listed below in the overview">
+</p>
 
  This project involves transforming OLTP data into an OLAP format to optimise it for querying. Excel was used to clean data before inserting the rows into a PSQL database, the data was then extracted and transformed and uploaded to another PSQL database optimised for OLAP. The data was queried and visualised with both Excel and Tableau at the end of the process to provide insights and analysis of the contents.
 
@@ -73,7 +75,9 @@ make run-checks
 
 ## Star-Schema
 
-![Alt text](images\star_schema.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="images/star_schema.png" alt="Shows an image of the star schema, contains five tables including fact, manager, payment method, product and purchase type tables.">
+</p>
 
 ⦁	With our database structured in a star schema, querying is significantly more efficient, which in turn reduces performance costs.
 
@@ -83,28 +87,33 @@ make run-checks
 
 ## Interactive Dashboards
 
-![Alt text](images\europe_sales_dashboard.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="images/europe_sales_dashboard.png" alt="Shows an image of a European sales dashboard presenting total profit, revenue and customers by week, product and country">
+</p>
 
-![Alt text](images\europe_sales_dashboard_filtered.png)
- 
+</p>
+ <p align="left"><img style="margin: auto;" src="images/europe_sales_dashboard_filtered.png" alt="Shows an image of a European sales dashboard presenting total profit, revenue and customers by week, product and country filtered by the sales of fries.">
+</p> 
 
 ⦁	Both of our Dashboards are live and interactive, by clicking on Product, Week or Country, it will dynamically change all the data to represent a chosen a filter and similarly, you can do the same on the second Dashboard.
 
 ⦁	Our designs are created with simplicity in mind, it is very clear and easy to retrieve valuable data and insights, while both can be easily modified and adjusted to add further requested features.
 
-![Alt text](images\sales_transacation_types.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="images/sales_transacation_types.png" alt="Shows an image of a dashboard containing transaction types including Online, Drive Thru and In Store, shows the total profit, revenue and customers">
+</p>
 
-![Alt text](images\sales_transacation_types_filtered.png)
-
+</p>
+ <p align="left"><img style="margin: auto;" src="images/sales_transacation_types_filtered.png" alt="Shows an image of a dashboard containing transaction types including Online, Drive Thru and In Store, shows the total profit, revenue and customers filtered by in store sales">
+</p>
  
 ⦁	As demonstrated in the image above, selecting a product automatically updates all our data to reflect the chosen filter.
 
 ⦁	With filtering capabilities, targeting specific data is much more efficient than having multiple dashboards, although that is an option.
 
-Extra Visualisations
+## Extra Visualisations
 
-## Product Revenue and Profit for November
-
+## Top Selling Product Revenue and Profit for November by City
 
 ```
 with Quantity_By_Product as (
@@ -141,7 +150,9 @@ where
     Quantity_Rank = 1
 ```
 
-![Alt text](src\queries\visualised_queries\revenue_and_profit_by_country.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="src/queries/visualised_queries/revenue_and_profit_by_country.png" alt="Shows an image of a world map illustrating top selling products by city including total profit and revenue and customers sold to.">
+</p>
 
 ## Profit Margin by Product
 
@@ -159,4 +170,6 @@ ORDER BY
     profit_margin_percentage DESC 
 ```
 
-![Alt text](src\queries\visualised_queries\profit_margin_by_product.png)
+</p>
+ <p align="left"><img style="margin: auto;" src="src/queries/visualised_queries/profit_margin_by_product.png" alt="Shows an image of bar charts presenting profit margins for individual products in cost and by percentage.">
+</p>
