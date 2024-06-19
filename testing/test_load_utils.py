@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.testing.assertions import AssertsExecutionResults
 from unittest.mock import MagicMock, patch
 from decimal import Decimal
-from src.utils.load_utils import run_engine_to_insert_database
+from src.utils.load_utils import run_engine_to_insert_to_database
 from src.utils.connection_utils import create_engine_connection, get_db_credentials
 from src.utils.processing_utils import create_star_schema_dict
 
@@ -30,7 +30,7 @@ class TestEngineInsertData:
         with engine.connect() as connection:
             connection.execute(text("TRUNCATE fact CASCADE"))
             connection.commit()
-        run_engine_to_insert_database(engine, dataframe_dictionary)
+        run_engine_to_insert_to_database(engine, dataframe_dictionary)
         
         with engine.connect() as connection:
             result1 = connection.execute(text("SELECT * FROM product ORDER BY product_id")).fetchall()
@@ -47,7 +47,7 @@ class TestEngineInsertData:
         bad_input = {"terrible": ["bad"]}
 
         with pytest.raises(ValueError):
-            run_engine_to_insert_database(engine, bad_input)
+            run_engine_to_insert_to_database(engine, bad_input)
 
         
         

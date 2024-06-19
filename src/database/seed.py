@@ -1,5 +1,5 @@
 from src.utils.connection_utils import get_db_credentials, create_engine_connection
-from src.utils.load_utils import run_engine_to_insert_database
+from src.utils.load_utils import run_engine_to_insert_to_database
 from src.utils.ingestion_utils import (
     read_data_file_into_dataframe,
     insert_data_into_database,
@@ -19,7 +19,7 @@ def seed_oltp(users, switch=False):
 def seed_olap_warehouse(df_dict, user):
     credentials_warehouse = get_db_credentials(user)
     engine = create_engine_connection(credentials_warehouse, switch=True)
-    run_engine_to_insert_database(engine,df_dict)
+    run_engine_to_insert_to_database(engine,df_dict)
     engine.dispose()
 
 input_data = {
