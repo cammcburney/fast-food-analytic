@@ -8,6 +8,8 @@
 
  ## Project Overview
 
+![Alt text](images\project_pipeline.png)
+
  This project involves transforming OLTP data into an OLAP format to optimise it for querying. Excel was used to clean data before inserting the rows into a PSQL database, the data was then extracted and transformed and uploaded to another PSQL database optimised for OLAP. The data was queried and visualised with both Excel and Tableau at the end of the process to provide insights and analysis of the contents.
 
 - Data Cleaning and Initial Visualization:
@@ -68,10 +70,10 @@ export PYTHONPATH=$(pwd)
 ```
 make run-checks
 ```
- 
+
 ## Star-Schema
 
-![Alt text](images\project_pipeline.png)
+![Alt text](images\star_schema.png)
 
 ⦁	With our database structured in a star schema, querying is significantly more efficient, which in turn reduces performance costs.
 
