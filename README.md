@@ -8,7 +8,7 @@
 
  ## Project Overview
 
-![Alt text](images\project_pipeline.png)
+![Local Image](images\project_pipeline.png)
 
  This project involves transforming OLTP data into an OLAP format to optimise it for querying. Excel was used to clean data before inserting the rows into a PSQL database, the data was then extracted and transformed and uploaded to another PSQL database optimised for OLAP. The data was queried and visualised with both Excel and Tableau at the end of the process to provide insights and analysis of the contents.
 
@@ -73,7 +73,7 @@ make run-checks
 
 ## Star-Schema
 
-![Alt text](images\star_schema.png)
+![Local Image](images\star_schema.png)
 
 ⦁	With our database structured in a star schema, querying is significantly more efficient, which in turn reduces performance costs.
 
@@ -83,18 +83,18 @@ make run-checks
 
 ## Interactive Dashboards
 
-![Alt text](images\europe_sales_dashboard.png)
+![Local Image](images\europe_sales_dashboard.png)
 
-![Alt text](images\europe_sales_dashboard_filtered.png)
+![Local Image](images\europe_sales_dashboard_filtered.png)
  
 
 ⦁	Both of our Dashboards are live and interactive, by clicking on Product, Week or Country, it will dynamically change all the data to represent a chosen a filter and similarly, you can do the same on the second Dashboard.
 
 ⦁	Our designs are created with simplicity in mind, it is very clear and easy to retrieve valuable data and insights, while both can be easily modified and adjusted to add further requested features.
 
-![Alt text](images\sales_transacation_types.png)
+![Local Image](images\sales_transacation_types.png)
 
-![Alt text](images\sales_transacation_types_filtered.png)
+![Local Image](images\sales_transacation_types_filtered.png)
 
  
 ⦁	As demonstrated in the image above, selecting a product automatically updates all our data to reflect the chosen filter.
@@ -141,7 +141,7 @@ where
     Quantity_Rank = 1
 ```
 
-![Alt text](src\queries\visualised_queries\revenue_and_profit_by_country.png)
+![Local Image](src\queries\visualised_queries\revenue_and_profit_by_country.png)
 
 ## Profit Margin by Product
 
@@ -159,4 +159,4 @@ ORDER BY
     profit_margin_percentage DESC 
 ```
 
-![Alt text](src\queries\visualised_queries\profit_margin_by_product.png)
+![Local Image](src\queries\visualised_queries\profit_margin_by_product.png)
